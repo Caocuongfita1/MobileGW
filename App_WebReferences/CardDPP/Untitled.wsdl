@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:jndi="http://www.tibco.com/namespaces/ws/2004/soap/apis/jndi" xmlns:ns2="shb/common/envelope/serviceenvelope/1.0" xmlns:jms="http://www.tibco.com/namespaces/ws/2004/soap/binding/JMS" xmlns:tns="http://xmlns.example.com/1577420694763" xmlns:ns0="shb/global/openapi/carddpp/ver1.0" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:ns1="shb/common/envelope/commonheader/1.0" name="Untitled" targetNamespace="http://xmlns.example.com/1577420694763" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema xmlns="shb/global/openapi/carddpp/ver1.0" xmlns:cmd-envelope="shb/common/envelope/serviceenvelope/1.0" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="shb/global/openapi/carddpp/ver1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="shb/common/envelope/serviceenvelope/1.0" />
+      <xs:complexType name="GetCardInstallmentPeriodByTranReqType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="cmd-envelope:BaseServiceEnvelopeRequestType">
+            <xs:sequence>
+              <xs:element name="partnerCode" type="xs:string" />
+              <xs:element name="tranId" type="xs:string" />
+              <xs:element name="cardNo" type="xs:string" />
+              <xs:element name="tranSign" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetCardInstallmentPeriodByTranResType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="cmd-envelope:BaseServiceEnvelopeResponseType">
+            <xs:sequence>
+              <xs:element name="tranId" type="xs:string" />
+              <xs:element name="amtOrg" type="xs:string" />
+              <xs:element name="finDt" type="xs:string" />
+              <xs:element name="periodId" type="xs:string" />
+              <xs:element name="installmentPeriod" type="xs:string" />
+              <xs:element name="amountMonth" type="xs:string" />
+              <xs:element name="amountMonthEnd" type="xs:string" />
+              <xs:element name="conversionFee" type="xs:string" />
+              <xs:element name="interestRate" type="xs:string" />
+              <xs:element name="installmentPeriodStart" type="xs:string" />
+              <xs:element name="installmentPeriodEnd" type="xs:string" />
+              <xs:element name="conversionFeeAmount" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetInterestAndFeeReqType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="cmd-envelope:BaseServiceEnvelopeRequestType">
+            <xs:sequence>
+              <xs:element name="partnerCode" type="xs:string" />
+              <xs:element name="tranId" type="xs:string" />
+              <xs:element name="cardNo" type="xs:string" />
+              <xs:element name="amount" type="xs:string" />
+              <xs:element name="tranSign" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetInterestAndFeeResType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="cmd-envelope:BaseServiceEnvelopeResponseType">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns0:InterestAndFeeList" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetScheduleListReqType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="cmd-envelope:BaseServiceEnvelopeRequestType">
+            <xs:sequence>
+              <xs:element name="partnerCode" type="xs:string" />
+              <xs:element name="tranId" type="xs:string" />
+              <xs:element name="cardNo" type="xs:string" />
+              <xs:element name="periodId" type="xs:string" />
+              <xs:element name="amount" type="xs:string" />
+              <xs:element name="tranSign" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetScheduleListResType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="cmd-envelope:BaseServiceEnvelopeResponseType">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns0:ScheduleList" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetTransactionListReqType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="cmd-envelope:BaseServiceEnvelopeRequestType">
+            <xs:sequence>
+              <xs:element name="partnerCode" type="xs:string" />
+              <xs:element name="custId" type="xs:string" />
+              <xs:element name="cardNo" type="xs:string" />
+              <xs:element name="enquiryType" type="xs:string" />
+              <xs:element name="fromDate" type="xs:string" />
+              <xs:element name="toDate" type="xs:string" />
+              <xs:element name="tranSign" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetTransactionListResType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="cmd-envelope:BaseServiceEnvelopeResponseType">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns0:TransactionList" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="InterestAndFeeListType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="tranId" type="xs:string" />
+          <xs:element minOccurs="0" name="cardNo" type="xs:string" />
+          <xs:element minOccurs="0" name="amountTotal" type="xs:string" />
+          <xs:element minOccurs="0" name="periodId" type="xs:string" />
+          <xs:element minOccurs="0" name="installmentPeriod" type="xs:string" />
+          <xs:element minOccurs="0" name="amountMonth" type="xs:string" />
+          <xs:element minOccurs="0" name="amountMonthEnd" type="xs:string" />
+          <xs:element minOccurs="0" name="conversionFee" type="xs:string" />
+          <xs:element minOccurs="0" name="interestRate" type="xs:string" />
+          <xs:element minOccurs="0" name="installmentPeriodStart" type="xs:string" />
+          <xs:element minOccurs="0" name="installmentPeriodEnd" type="xs:string" />
+          <xs:element minOccurs="0" name="conversionFeeAmount" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="RegisterTranReqType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="cmd-envelope:BaseServiceEnvelopeRequestType">
+            <xs:sequence>
+              <xs:element name="partnerCode" type="xs:string" />
+              <xs:element name="tranId" type="xs:string" />
+              <xs:element name="cardNo" type="xs:string" />
+              <xs:element name="periodId" type="xs:string" />
+              <xs:element name="custId" type="xs:string" />
+              <xs:element name="amount" type="xs:string" />
+              <xs:element name="tranSign" type="xs:string" />
+              <xs:element minOccurs="0" name="email" type="xs:string" />
+              <xs:element minOccurs="0" name="phone" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="RegisterTranResType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="cmd-envelope:BaseServiceEnvelopeResponseType">
+            <xs:sequence>
+              <xs:element name="errorCode" type="xs:string" />
+              <xs:element name="errorDesc" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ScheduleListType">
+        <xs:sequence>
+          <xs:element name="periodId" type="xs:string" />
+          <xs:element name="paymentDate" type="xs:string" />
+          <xs:element name="paymentAmount" type="xs:string" />
+          <xs:element name="outstandingPrincipal" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="TransactionListType">
+        <xs:sequence>
+          <xs:element name="tranId" type="xs:string" />
+          <xs:element name="status" type="xs:string" />
+          <xs:element name="txDt" type="xs:string" />
+          <xs:element name="txTime" type="xs:string" />
+          <xs:element name="txDesc" type="xs:string" />
+          <xs:element name="txAmt" type="xs:string" />
+          <xs:element name="mccCd" type="xs:string" />
+          <xs:element name="amtOrg" type="xs:string" />
+          <xs:element name="finDt" type="xs:string" />
+          <xs:element minOccurs="0" name="crDr" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetCardInstallmentPeriodByTranReq" type="ns0:GetCardInstallmentPeriodByTranReqType" />
+      <xs:element name="GetCardInstallmentPeriodByTranRes" type="ns0:GetCardInstallmentPeriodByTranResType" />
+      <xs:element name="GetInterestAndFeeReq" type="ns0:GetInterestAndFeeReqType" />
+      <xs:element name="GetInterestAndFeeRes" type="ns0:GetInterestAndFeeResType" />
+      <xs:element name="GetScheduleListReq" type="ns0:GetScheduleListReqType" />
+      <xs:element name="GetScheduleListRes" type="ns0:GetScheduleListResType" />
+      <xs:element name="GetTransactionListReq" type="ns0:GetTransactionListReqType" />
+      <xs:element name="GetTransactionListRes" type="ns0:GetTransactionListResType" />
+      <xs:element name="InterestAndFeeList" type="ns0:InterestAndFeeListType" />
+      <xs:element name="RegisterTranReq" type="ns0:RegisterTranReqType" />
+      <xs:element name="RegisterTranRes" type="ns0:RegisterTranResType" />
+      <xs:element name="ScheduleList" type="ns0:ScheduleListType" />
+      <xs:element name="TransactionList" type="ns0:TransactionListType" />
+    </xs:schema>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:cmd-header="shb/common/envelope/commonheader/1.0" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="shb/common/envelope/commonheader/1.0" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:annotation>
+        <xsd:documentation xml:lang="en">Unique Application Identification to identify Traget application or system within an organization, e.g "SmartLender", "Murex, "Ipay"</xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType name="AppHdrType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" ref="cmd-header:CharSet">
+            <xsd:annotation>
+              <xsd:documentation xml:lang="en">Character encoding</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="cmd-header:SvcVer">
+            <xsd:annotation>
+              <xsd:documentation>Version of the service to invoke</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="From" type="cmd-header:PairsType">
+            <xsd:annotation>
+              <xsd:documentation>The Name and ID of the application send the message to the ESB</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="To" type="cmd-header:PairsType">
+            <xsd:annotation>
+              <xsd:documentation>The Name and ID of the application receive the message from the ESB</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="cmd-header:MsgId">
+            <xsd:annotation>
+              <xsd:documentation xml:lang="en">This ID can be used by Service Client to correlate respond message.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" ref="cmd-header:MsgPreId">
+            <xsd:annotation>
+              <xsd:documentation xml:lang="en">ID of the previous application.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="BizSvc" type="cmd-header:PairsType">
+            <xsd:annotation>
+              <xsd:documentation>Business Domain</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="cmd-header:TransDt">
+            <xsd:annotation>
+              <xsd:documentation xml:lang="en">The Date of created message</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" ref="cmd-header:Signature">
+            <xsd:annotation>
+              <xsd:documentation xml:lang="en">Digital Signature</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ErrInfoType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Id" type="xsd:string" />
+          <xsd:element minOccurs="0" name="ErrCd" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>Error code returned by "SourceAppID" System.  This Error Code is unique to each System.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ErrMsg" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PairsType">
+        <xsd:sequence>
+          <xsd:element name="Id" type="xsd:string" />
+          <xsd:element name="Name" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RespStsType">
+        <xsd:sequence>
+          <xsd:element name="Sts" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>ESB Service's processing status</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ErrCd" type="xsd:string" />
+          <xsd:element minOccurs="0" name="ErrMsg" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ErrInfo" type="cmd-header:ErrInfoType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="AppHdr" type="cmd-header:AppHdrType" />
+      <xsd:element name="CharSet" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">Character encoding</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="MsgId" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">This ID can be used by Service Client to correlate respond message.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="MsgPreId" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">ID of the previous application.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="MsgSrcId" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">ID of the initiate application.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="NameValuePairs" type="cmd-header:PairsType" />
+      <xsd:element name="RespSts" type="cmd-header:RespStsType" />
+      <xsd:element name="Signature" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">Digital Signature</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="SvcVer" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Version of the service to invoke</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Test" type="xsd:string" />
+      <xsd:element name="TransDt" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">The Date of created message</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:schema>
+    <xs:schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:cmd-envelope="shb/common/envelope/serviceenvelope/1.0" xmlns:cmd-header="shb/common/envelope/commonheader/1.0" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="shb/common/envelope/serviceenvelope/1.0" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="shb/common/envelope/commonheader/1.0" />
+      <xs:complexType name="BaseServiceEnvelopeRequestType">
+        <xs:sequence>
+          <xs:element ref="cmd-header:AppHdr" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="BaseServiceEnvelopeResponseType">
+        <xs:sequence>
+          <xs:element ref="cmd-header:AppHdr" />
+          <xs:element ref="cmd-header:RespSts" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ServiceBodyType">
+        <xs:sequence>
+          <xs:any minOccurs="0" maxOccurs="unbounded" namespace="##any" processContents="lax" />
+        </xs:sequence>
+        <xs:anyAttribute namespace="##any" processContents="lax" />
+      </xs:complexType>
+      <xs:complexType name="ServiceEnverlopType">
+        <xs:sequence>
+          <xs:element ref="cmd-header:AppHdr" />
+          <xs:element minOccurs="0" ref="cmd-header:RespSts" />
+          <xs:element name="ServiceBody" type="cmd-envelope:ServiceBodyType" />
+          <xs:element minOccurs="0" name="Other" type="xs:string" />
+        </xs:sequence>
+        <xs:anyAttribute namespace="##any" processContents="lax" />
+      </xs:complexType>
+      <xs:element name="BaseServiceEnvelopeRequest" type="cmd-envelope:BaseServiceEnvelopeRequestType" />
+      <xs:element name="BaseServiceEnvelopeResponse" type="cmd-envelope:BaseServiceEnvelopeResponseType" />
+      <xs:element name="ServiceEnverlop" type="cmd-envelope:ServiceEnverlopType" />
+      <xs:attribute name="actor" type="xs:anyURI" />
+      <xs:attribute name="mustUnderstand">
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean">
+            <xs:pattern value="0|1" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="GetInterestAndFeeReq">
+    <wsdl:part name="request" element="ns0:GetInterestAndFeeReq" />
+  </wsdl:message>
+  <wsdl:message name="GetInterestAndFeeRes">
+    <wsdl:part name="response" element="ns0:GetInterestAndFeeRes" />
+  </wsdl:message>
+  <wsdl:message name="GetCardInstallmentPeriodByTranReq">
+    <wsdl:part name="request" element="ns0:GetCardInstallmentPeriodByTranReq" />
+  </wsdl:message>
+  <wsdl:message name="GetCardInstallmentPeriodByTranRes">
+    <wsdl:part name="response" element="ns0:GetCardInstallmentPeriodByTranRes" />
+  </wsdl:message>
+  <wsdl:message name="GetScheduleListReq">
+    <wsdl:part name="request" element="ns0:GetScheduleListReq" />
+  </wsdl:message>
+  <wsdl:message name="GetScheduleListRes">
+    <wsdl:part name="response" element="ns0:GetScheduleListRes" />
+  </wsdl:message>
+  <wsdl:message name="GetTransactionListReq">
+    <wsdl:part name="request" element="ns0:GetTransactionListReq" />
+  </wsdl:message>
+  <wsdl:message name="GetTransactionListRes">
+    <wsdl:part name="response" element="ns0:GetTransactionListRes" />
+  </wsdl:message>
+  <wsdl:message name="RegisterTranReq">
+    <wsdl:part name="request" element="ns0:RegisterTranReq" />
+  </wsdl:message>
+  <wsdl:message name="RegisterTranRes">
+    <wsdl:part name="response" element="ns0:RegisterTranRes" />
+  </wsdl:message>
+  <wsdl:portType name="PortType">
+    <wsdl:operation name="GetInterestAndFee">
+      <wsdl:input message="tns:GetInterestAndFeeReq" />
+      <wsdl:output message="tns:GetInterestAndFeeRes" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCardInstallmentPeriodByTran">
+      <wsdl:input message="tns:GetCardInstallmentPeriodByTranReq" />
+      <wsdl:output message="tns:GetCardInstallmentPeriodByTranRes" />
+    </wsdl:operation>
+    <wsdl:operation name="GetScheduleList">
+      <wsdl:input message="tns:GetScheduleListReq" />
+      <wsdl:output message="tns:GetScheduleListRes" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionList">
+      <wsdl:input message="tns:GetTransactionListReq" />
+      <wsdl:output message="tns:GetTransactionListRes" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterTran">
+      <wsdl:input message="tns:RegisterTranReq" />
+      <wsdl:output message="tns:RegisterTranRes" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PortTypeEndpoint0Binding" type="tns:PortType">
+    <soap:binding transport="http://www.tibco.com/namespaces/ws/2004/soap/binding/JMS" />
+    <jms:binding messageFormat="bytes" />
+    <wsdl:operation name="GetInterestAndFee">
+      <soap:operation soapAction="/Services/Global/OpenAPI/CardDPP/OperationImpl/CardDPP-service0.serviceagent/PortTypeEndpoint0/GetInterestAndFee" style="document" soapActionRequired="true" />
+      <wsdl:input>
+        <soap:body use="literal" parts="request" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="response" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCardInstallmentPeriodByTran">
+      <soap:operation soapAction="/Services/Global/OpenAPI/CardDPP/OperationImpl/CardDPP-service0.serviceagent/PortTypeEndpoint0/GetCardInstallmentPeriodByTran" style="document" soapActionRequired="true" />
+      <wsdl:input>
+        <soap:body use="literal" parts="request" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="response" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetScheduleList">
+      <soap:operation soapAction="/Services/Global/OpenAPI/CardDPP/OperationImpl/CardDPP-service0.serviceagent/PortTypeEndpoint0/GetScheduleList" style="document" soapActionRequired="true" />
+      <wsdl:input>
+        <soap:body use="literal" parts="request" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="response" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionList">
+      <soap:operation soapAction="/Services/Global/OpenAPI/CardDPP/OperationImpl/CardDPP-service0.serviceagent/PortTypeEndpoint0/GetTransactionList" style="document" soapActionRequired="true" />
+      <wsdl:input>
+        <soap:body use="literal" parts="request" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="response" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterTran">
+      <soap:operation soapAction="/Services/Global/OpenAPI/CardDPP/OperationImpl/CardDPP-service0.serviceagent/PortTypeEndpoint0/RegisterTran" style="document" soapActionRequired="true" />
+      <wsdl:input>
+        <soap:body use="literal" parts="request" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="response" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CardDPP">
+    <wsdl:port name="PortTypeEndpoint0" binding="tns:PortTypeEndpoint0Binding">
+      <soap:address location="" />
+      <jms:connectionFactory>QueueConnectionFactory</jms:connectionFactory>
+      <jms:targetAddress destination="queue">openapi.carddpp.v10</jms:targetAddress>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

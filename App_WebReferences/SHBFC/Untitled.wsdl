@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:jndi="http://www.tibco.com/namespaces/ws/2004/soap/apis/jndi" xmlns:ns2="shb/common/envelope/serviceenvelope/1.0" xmlns:jms="http://www.tibco.com/namespaces/ws/2004/soap/binding/JMS" xmlns:tns="http://xmlns.example.com/1529470415615" xmlns:ns0="shb/global/financials/shbfcfinancialincoming/ver1.0" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:ns1="shb/common/envelope/commonheader/1.0" name="Untitled" targetNamespace="http://xmlns.example.com/1529470415615" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:cmd-header="shb/common/envelope/commonheader/1.0" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="shb/common/envelope/commonheader/1.0" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:annotation>
+        <xsd:documentation xml:lang="en">Unique Application Identification to identify Traget application or system within an organization, e.g "SmartLender", "Murex, "Ipay"</xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType name="AppHdrType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" ref="cmd-header:CharSet">
+            <xsd:annotation>
+              <xsd:documentation xml:lang="en">Character encoding</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="cmd-header:SvcVer">
+            <xsd:annotation>
+              <xsd:documentation>Version of the service to invoke</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="From" type="cmd-header:PairsType">
+            <xsd:annotation>
+              <xsd:documentation>The Name and ID of the application send the message to the ESB</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="To" type="cmd-header:PairsType">
+            <xsd:annotation>
+              <xsd:documentation>The Name and ID of the application receive the message from the ESB</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="cmd-header:MsgId">
+            <xsd:annotation>
+              <xsd:documentation xml:lang="en">This ID can be used by Service Client to correlate respond message.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" ref="cmd-header:MsgPreId">
+            <xsd:annotation>
+              <xsd:documentation xml:lang="en">ID of the previous application.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="BizSvc" type="cmd-header:PairsType">
+            <xsd:annotation>
+              <xsd:documentation>Business Domain</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="cmd-header:TransDt">
+            <xsd:annotation>
+              <xsd:documentation xml:lang="en">The Date of created message</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" ref="cmd-header:Signature">
+            <xsd:annotation>
+              <xsd:documentation xml:lang="en">Digital Signature</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ErrInfoType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Id" type="xsd:string" />
+          <xsd:element minOccurs="0" name="ErrCd" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>Error code returned by "SourceAppID" System.  This Error Code is unique to each System.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ErrMsg" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PairsType">
+        <xsd:sequence>
+          <xsd:element name="Id" type="xsd:string" />
+          <xsd:element name="Name" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RespStsType">
+        <xsd:sequence>
+          <xsd:element name="Sts" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>ESB Service's processing status</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ErrCd" type="xsd:string" />
+          <xsd:element minOccurs="0" name="ErrMsg" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ErrInfo" type="cmd-header:ErrInfoType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="AppHdr" type="cmd-header:AppHdrType" />
+      <xsd:element name="CharSet" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">Character encoding</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="MsgId" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">This ID can be used by Service Client to correlate respond message.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="MsgPreId" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">ID of the previous application.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="MsgSrcId" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">ID of the initiate application.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="NameValuePairs" type="cmd-header:PairsType" />
+      <xsd:element name="RespSts" type="cmd-header:RespStsType" />
+      <xsd:element name="Signature" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">Digital Signature</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="SvcVer" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Version of the service to invoke</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Test" type="xsd:string" />
+      <xsd:element name="TransDt" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">The Date of created message</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:schema>
+    <xs:schema xmlns="shb/global/financials/shbfcfinancialincoming/ver1.0" xmlns:cmd-envelope="shb/common/envelope/serviceenvelope/1.0" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="shb/global/financials/shbfcfinancialincoming/ver1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="shb/common/envelope/serviceenvelope/1.0" />
+      <xs:complexType name="DebtPaymentReqType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="cmd-envelope:BaseServiceEnvelopeRequestType">
+            <xs:sequence>
+              <xs:element name="contractNumber" type="xs:string" />
+              <xs:element name="paymentAmt" type="xs:string" />
+              <xs:element name="partnerLocationId" type="xs:string" />
+              <xs:element name="refNo" type="xs:string" />
+              <xs:element name="valDate" type="xs:string" />
+              <xs:element minOccurs="0" name="paymentDetails" type="xs:string" />
+              <xs:element minOccurs="0" name="shbAccountNumber" type="xs:string" />
+              <xs:element name="orgTranDate" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="DebtPaymentResType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="cmd-envelope:BaseServiceEnvelopeResponseType">
+            <xs:sequence>
+              <xs:element name="statusCode" type="xs:string" />
+              <xs:element name="messageId" type="xs:string" />
+              <xs:element name="statusDesc" type="xs:string" />
+              <xs:element minOccurs="0" ref="ns0:result" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="DisbursementReqType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="cmd-envelope:BaseServiceEnvelopeRequestType">
+            <xs:sequence>
+              <xs:element name="contractNumber" type="xs:string" />
+              <xs:element name="customerName" type="xs:string" />
+              <xs:element name="nationalID" type="xs:string" />
+              <xs:element name="disbursementAmount" type="xs:string" />
+              <xs:element name="disbursementDate" type="xs:string" />
+              <xs:element name="referenceNumber" type="xs:string" />
+              <xs:element name="token" type="xs:string" />
+              <xs:element name="referenceDate" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="DisbursementResType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="cmd-envelope:BaseServiceEnvelopeResponseType">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="statusCode" type="xs:string" />
+              <xs:element minOccurs="0" name="statusDesc" type="xs:string" />
+              <xs:element minOccurs="0" name="messageId" type="xs:string" />
+              <xs:element minOccurs="0" ref="ns0:result" />
+              <xs:element minOccurs="0" name="financeTransactionDate" type="xs:string" />
+              <xs:element minOccurs="0" name="financeTransactionId" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetDisbursementReqType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="cmd-envelope:BaseServiceEnvelopeRequestType">
+            <xs:sequence>
+              <xs:element name="contractNumber" type="xs:string" />
+              <xs:element name="nationalID" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetDisbursementResType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="cmd-envelope:BaseServiceEnvelopeResponseType">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="statusCode" type="xs:string" />
+              <xs:element minOccurs="0" name="statusDesc" type="xs:string" />
+              <xs:element minOccurs="0" name="messageId" type="xs:string" />
+              <xs:element minOccurs="0" name="idCardNumber" type="xs:string" />
+              <xs:element minOccurs="0" name="contractNumber" type="xs:string" />
+              <xs:element minOccurs="0" name="idCardIssueDate" type="xs:string" />
+              <xs:element minOccurs="0" name="idCardIssuePlace" type="xs:string" />
+              <xs:element minOccurs="0" name="customerName" type="xs:string" />
+              <xs:element minOccurs="0" name="disbursementAmount" type="xs:string" />
+              <xs:element minOccurs="0" name="disbursementDate" type="xs:string" />
+              <xs:element minOccurs="0" name="financeTransactionDate" type="xs:string" />
+              <xs:element minOccurs="0" name="financeTransactionId" type="xs:string" />
+              <xs:element minOccurs="0" name="partnerLocationId" type="xs:string" />
+              <xs:element minOccurs="0" name="partnerCode" type="xs:string" />
+              <xs:element minOccurs="0" name="partnerTransactionId" type="xs:string" />
+              <xs:element minOccurs="0" name="returnCode" type="xs:string" />
+              <xs:element minOccurs="0" name="returnMessage" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetLoanInforReqType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="cmd-envelope:BaseServiceEnvelopeRequestType">
+            <xs:sequence>
+              <xs:element name="contractNumber" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetLoanInforResType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="cmd-envelope:BaseServiceEnvelopeResponseType">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="statusCode" type="xs:string" />
+              <xs:element minOccurs="0" name="statusDesc" type="xs:string" />
+              <xs:element minOccurs="0" name="messageId" type="xs:string" />
+              <xs:element minOccurs="0" ref="ns0:LoanDetails" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="LoanDetailsType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="errorCode" type="xs:string" />
+          <xs:element minOccurs="0" name="errorMessage" type="xs:string" />
+          <xs:element minOccurs="0" name="pdAmt" type="xs:string" />
+          <xs:element minOccurs="0" name="nextRepayAmt" type="xs:string" />
+          <xs:element minOccurs="0" name="nextRepayDate" type="xs:string" />
+          <xs:element minOccurs="0" name="totalAmt" type="xs:string" />
+          <xs:element minOccurs="0" name="nationalId" type="xs:string" />
+          <xs:element minOccurs="0" name="customerName" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="RevertPaymentReqType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="cmd-envelope:BaseServiceEnvelopeRequestType">
+            <xs:sequence>
+              <xs:element name="revertRefNo" type="xs:string" />
+              <xs:element name="revertTranDate" type="xs:string" />
+              <xs:element minOccurs="0" name="transactionDate" type="xs:string" />
+              <xs:element minOccurs="0" name="refNo" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="RevertPaymentResType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="cmd-envelope:BaseServiceEnvelopeResponseType">
+            <xs:sequence>
+              <xs:element name="statusCode" type="xs:string" />
+              <xs:element minOccurs="0" name="statusDesc" type="xs:string" />
+              <xs:element name="messageId" type="xs:string" />
+              <xs:element minOccurs="0" ref="ns0:result" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="resultType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="errorCode" type="xs:string" />
+          <xs:element minOccurs="0" name="errorMsg" type="xs:string" />
+          <xs:element minOccurs="0" name="responseTime" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="DebtPaymentReq" type="ns0:DebtPaymentReqType" />
+      <xs:element name="DebtPaymentRes" type="ns0:DebtPaymentResType" />
+      <xs:element name="DisbursementReq" type="ns0:DisbursementReqType" />
+      <xs:element name="DisbursementRes" type="ns0:DisbursementResType" />
+      <xs:element name="GetDisbursementReq" type="ns0:GetDisbursementReqType" />
+      <xs:element name="GetDisbursementRes" type="ns0:GetDisbursementResType" />
+      <xs:element name="GetLoanInforReq" type="ns0:GetLoanInforReqType" />
+      <xs:element name="GetLoanInforRes" type="ns0:GetLoanInforResType" />
+      <xs:element name="LoanDetails" type="ns0:LoanDetailsType" />
+      <xs:element name="RevertPaymentReq" type="ns0:RevertPaymentReqType" />
+      <xs:element name="RevertPaymentRes" type="ns0:RevertPaymentResType" />
+      <xs:element name="result" type="ns0:resultType" />
+    </xs:schema>
+    <xs:schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:cmd-envelope="shb/common/envelope/serviceenvelope/1.0" xmlns:cmd-header="shb/common/envelope/commonheader/1.0" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="shb/common/envelope/serviceenvelope/1.0" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="shb/common/envelope/commonheader/1.0" />
+      <xs:complexType name="BaseServiceEnvelopeRequestType">
+        <xs:sequence>
+          <xs:element ref="cmd-header:AppHdr" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="BaseServiceEnvelopeResponseType">
+        <xs:sequence>
+          <xs:element ref="cmd-header:AppHdr" />
+          <xs:element ref="cmd-header:RespSts" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ServiceBodyType">
+        <xs:sequence>
+          <xs:any minOccurs="0" maxOccurs="unbounded" namespace="##any" processContents="lax" />
+        </xs:sequence>
+        <xs:anyAttribute namespace="##any" processContents="lax" />
+      </xs:complexType>
+      <xs:complexType name="ServiceEnverlopType">
+        <xs:sequence>
+          <xs:element ref="cmd-header:AppHdr" />
+          <xs:element minOccurs="0" ref="cmd-header:RespSts" />
+          <xs:element name="ServiceBody" type="cmd-envelope:ServiceBodyType" />
+          <xs:element minOccurs="0" name="Other" type="xs:string" />
+        </xs:sequence>
+        <xs:anyAttribute namespace="##any" processContents="lax" />
+      </xs:complexType>
+      <xs:element name="BaseServiceEnvelopeRequest" type="cmd-envelope:BaseServiceEnvelopeRequestType" />
+      <xs:element name="BaseServiceEnvelopeResponse" type="cmd-envelope:BaseServiceEnvelopeResponseType" />
+      <xs:element name="ServiceEnverlop" type="cmd-envelope:ServiceEnverlopType" />
+      <xs:attribute name="actor" type="xs:anyURI" />
+      <xs:attribute name="mustUnderstand">
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean">
+            <xs:pattern value="0|1" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="GetDisbursementReq">
+    <wsdl:part name="Request" element="ns0:GetDisbursementReq" />
+  </wsdl:message>
+  <wsdl:message name="GetDisbursementRes">
+    <wsdl:part name="Response" element="ns0:GetDisbursementRes" />
+  </wsdl:message>
+  <wsdl:message name="RevertPaymentReq">
+    <wsdl:part name="Request" element="ns0:RevertPaymentReq" />
+  </wsdl:message>
+  <wsdl:message name="RevertPaymentRes">
+    <wsdl:part name="Response" element="ns0:RevertPaymentRes" />
+  </wsdl:message>
+  <wsdl:message name="DebtPaymentReq">
+    <wsdl:part name="Request" element="ns0:DebtPaymentReq" />
+  </wsdl:message>
+  <wsdl:message name="DebtPaymentRes">
+    <wsdl:part name="Response" element="ns0:DebtPaymentRes" />
+  </wsdl:message>
+  <wsdl:message name="DisbursementReq">
+    <wsdl:part name="Request" element="ns0:DisbursementReq" />
+  </wsdl:message>
+  <wsdl:message name="DisbursementRes">
+    <wsdl:part name="Response" element="ns0:DisbursementRes" />
+  </wsdl:message>
+  <wsdl:message name="GetLoanInforReq">
+    <wsdl:part name="Request" element="ns0:GetLoanInforReq" />
+  </wsdl:message>
+  <wsdl:message name="GetLoanInforRes">
+    <wsdl:part name="Response" element="ns0:GetLoanInforRes" />
+  </wsdl:message>
+  <wsdl:portType name="PortType">
+    <wsdl:operation name="GetDisbursement">
+      <wsdl:input message="tns:GetDisbursementReq" />
+      <wsdl:output message="tns:GetDisbursementRes" />
+    </wsdl:operation>
+    <wsdl:operation name="RevertPayment">
+      <wsdl:input message="tns:RevertPaymentReq" />
+      <wsdl:output message="tns:RevertPaymentRes" />
+    </wsdl:operation>
+    <wsdl:operation name="DebtPayment">
+      <wsdl:input message="tns:DebtPaymentReq" />
+      <wsdl:output message="tns:DebtPaymentRes" />
+    </wsdl:operation>
+    <wsdl:operation name="Disbursement">
+      <wsdl:input message="tns:DisbursementReq" />
+      <wsdl:output message="tns:DisbursementRes" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLoanInfor">
+      <wsdl:input message="tns:GetLoanInforReq" />
+      <wsdl:output message="tns:GetLoanInforRes" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PortTypeEndpoint0Binding" type="tns:PortType">
+    <soap:binding transport="http://www.tibco.com/namespaces/ws/2004/soap/binding/JMS" />
+    <jms:binding messageFormat="bytes" />
+    <wsdl:operation name="GetDisbursement">
+      <soap:operation soapAction="/Services/Global/Financials/SHBFCFinancialIncoming/OperationImpl/SHBFCFinancialIncoming-service0.serviceagent/PortTypeEndpoint0/GetDisbursement" style="document" soapActionRequired="true" />
+      <wsdl:input>
+        <soap:body use="literal" parts="Request" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="Response" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RevertPayment">
+      <soap:operation soapAction="/Services/Global/Financials/SHBFCFinancialIncoming/OperationImpl/SHBFCFinancialIncoming-service0.serviceagent/PortTypeEndpoint0/RevertPayment" style="document" soapActionRequired="true" />
+      <wsdl:input>
+        <soap:body use="literal" parts="Request" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="Response" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DebtPayment">
+      <soap:operation soapAction="/Services/Global/Financials/SHBFCFinancialIncoming/OperationImpl/SHBFCFinancialIncoming-service0.serviceagent/PortTypeEndpoint0/DebtPayment" style="document" soapActionRequired="true" />
+      <wsdl:input>
+        <soap:body use="literal" parts="Request" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="Response" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Disbursement">
+      <soap:operation soapAction="/Services/Global/Financials/SHBFCFinancialIncoming/OperationImpl/SHBFCFinancialIncoming-service0.serviceagent/PortTypeEndpoint0/Disbursement" style="document" soapActionRequired="true" />
+      <wsdl:input>
+        <soap:body use="literal" parts="Request" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="Response" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLoanInfor">
+      <soap:operation soapAction="/Services/Global/Financials/SHBFCFinancialIncoming/OperationImpl/SHBFCFinancialIncoming-service0.serviceagent/PortTypeEndpoint0/GetLoanInfor" style="document" soapActionRequired="true" />
+      <wsdl:input>
+        <soap:body use="literal" parts="Request" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="Response" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SHBFCFinancialIncoming">
+    <wsdl:port name="PortTypeEndpoint0" binding="tns:PortTypeEndpoint0Binding">
+      <soap:address location="" />
+      <jms:connectionFactory>QueueConnectionFactory</jms:connectionFactory>
+      <jms:targetAddress destination="queue">financials.shbfcfinancialincoming.v10</jms:targetAddress>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

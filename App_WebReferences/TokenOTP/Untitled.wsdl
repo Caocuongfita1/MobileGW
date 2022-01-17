@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:jndi="http://www.tibco.com/namespaces/ws/2004/soap/apis/jndi" xmlns:ns2="shb/common/envelope/serviceenvelope/1.0" xmlns:jms="http://www.tibco.com/namespaces/ws/2004/soap/binding/JMS" xmlns:tns="http://xmlns.example.com/1558956888403" xmlns:ns0="shb/global/tokenotp/ver1.0" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:ns1="shb/common/envelope/commonheader/1.0" name="Untitled" targetNamespace="http://xmlns.example.com/1558956888403" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:cmd-header="shb/common/envelope/commonheader/1.0" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="shb/common/envelope/commonheader/1.0" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:annotation>
+        <xsd:documentation xml:lang="en">Unique Application Identification to identify Traget application or system within an organization, e.g "SmartLender", "Murex, "Ipay"</xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType name="AppHdrType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" ref="cmd-header:CharSet">
+            <xsd:annotation>
+              <xsd:documentation xml:lang="en">Character encoding</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="cmd-header:SvcVer">
+            <xsd:annotation>
+              <xsd:documentation>Version of the service to invoke</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="From" type="cmd-header:PairsType">
+            <xsd:annotation>
+              <xsd:documentation>The Name and ID of the application send the message to the ESB</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="To" type="cmd-header:PairsType">
+            <xsd:annotation>
+              <xsd:documentation>The Name and ID of the application receive the message from the ESB</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="cmd-header:MsgId">
+            <xsd:annotation>
+              <xsd:documentation xml:lang="en">This ID can be used by Service Client to correlate respond message.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" ref="cmd-header:MsgPreId">
+            <xsd:annotation>
+              <xsd:documentation xml:lang="en">ID of the previous application.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="BizSvc" type="cmd-header:PairsType">
+            <xsd:annotation>
+              <xsd:documentation>Business Domain</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="cmd-header:TransDt">
+            <xsd:annotation>
+              <xsd:documentation xml:lang="en">The Date of created message</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" ref="cmd-header:Signature">
+            <xsd:annotation>
+              <xsd:documentation xml:lang="en">Digital Signature</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ErrInfoType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Id" type="xsd:string" />
+          <xsd:element minOccurs="0" name="ErrCd" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>Error code returned by "SourceAppID" System.  This Error Code is unique to each System.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ErrMsg" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PairsType">
+        <xsd:sequence>
+          <xsd:element name="Id" type="xsd:string" />
+          <xsd:element name="Name" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RespStsType">
+        <xsd:sequence>
+          <xsd:element name="Sts" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>ESB Service's processing status</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ErrCd" type="xsd:string" />
+          <xsd:element minOccurs="0" name="ErrMsg" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ErrInfo" type="cmd-header:ErrInfoType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="AppHdr" type="cmd-header:AppHdrType" />
+      <xsd:element name="CharSet" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">Character encoding</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="MsgId" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">This ID can be used by Service Client to correlate respond message.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="MsgPreId" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">ID of the previous application.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="MsgSrcId" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">ID of the initiate application.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="NameValuePairs" type="cmd-header:PairsType" />
+      <xsd:element name="RespSts" type="cmd-header:RespStsType" />
+      <xsd:element name="Signature" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">Digital Signature</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="SvcVer" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Version of the service to invoke</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Test" type="xsd:string" />
+      <xsd:element name="TransDt" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">The Date of created message</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:schema>
+    <xs:schema xmlns="shb/global/tokenotp/ver1.0" xmlns:cmd-envelope="shb/common/envelope/serviceenvelope/1.0" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="shb/global/tokenotp/ver1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="shb/common/envelope/serviceenvelope/1.0" />
+      <xs:complexType name="BlockUserReqType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="cmd-envelope:BaseServiceEnvelopeRequestType">
+            <xs:sequence>
+              <xs:element name="operatorID" type="xs:string" />
+              <xs:element name="userID" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="BlockUserResType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="cmd-envelope:BaseServiceEnvelopeResponseType">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="responseCode" type="xs:string" />
+              <xs:element minOccurs="0" name="message" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CreateTransactionReqType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="cmd-envelope:BaseServiceEnvelopeRequestType">
+            <xs:sequence>
+              <xs:element name="userID" type="xs:string" />
+              <xs:element name="transactionID" type="xs:string" />
+              <xs:element name="transactionTypeID" type="xs:string" />
+              <xs:element minOccurs="0" name="transactionData" type="xs:string" />
+              <xs:element minOccurs="0" name="challenge" type="xs:string" />
+              <xs:element minOccurs="0" name="callbackUrl" type="xs:string" />
+              <xs:element minOccurs="0" name="isOnline" type="xs:string" />
+              <xs:element minOccurs="0" name="isPush" type="xs:string" />
+              <xs:element name="eSignerTypeID" type="xs:string" />
+              <xs:element minOccurs="0" name="channelID" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CreateTransactionResType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="cmd-envelope:BaseServiceEnvelopeResponseType">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="responseCode" type="xs:string" />
+              <xs:element minOccurs="0" name="message" type="xs:string" />
+              <xs:element minOccurs="0" name="userID" type="xs:string" />
+              <xs:element minOccurs="0" name="transactionID" type="xs:string" />
+              <xs:element minOccurs="0" name="transactionData" type="xs:string" />
+              <xs:element minOccurs="0" name="transactionStatusID" type="xs:string" />
+              <xs:element minOccurs="0" name="challenge" type="xs:string" />
+              <xs:element minOccurs="0" name="isOnline" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetActivationCodeReqType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="cmd-envelope:BaseServiceEnvelopeRequestType">
+            <xs:sequence>
+              <xs:element name="userID" type="xs:string" />
+              <xs:element minOccurs="0" name="customerName" type="xs:string" />
+              <xs:element minOccurs="0" name="cifNumber" type="xs:string" />
+              <xs:element minOccurs="0" name="phoneNumber" type="xs:string" />
+              <xs:element minOccurs="0" name="branchID" type="xs:string" />
+              <xs:element name="customerTypeID" type="xs:string" />
+              <xs:element minOccurs="0" name="email" type="xs:string" />
+              <xs:element minOccurs="0" name="userName" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetActivationCodeResType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="cmd-envelope:BaseServiceEnvelopeResponseType">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="responseCode" type="xs:string" />
+              <xs:element minOccurs="0" name="message" type="xs:string" />
+              <xs:element minOccurs="0" name="activationCode" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="LockTokenReqType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="cmd-envelope:BaseServiceEnvelopeRequestType">
+            <xs:sequence>
+              <xs:element name="operatorID" type="xs:string" />
+              <xs:element name="tokenID" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="LockTokenResType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="cmd-envelope:BaseServiceEnvelopeResponseType">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="responseCode" type="xs:string" />
+              <xs:element minOccurs="0" name="message" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="RecreateTransaction2ReqType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="cmd-envelope:BaseServiceEnvelopeRequestType">
+            <xs:sequence>
+              <xs:element name="userID" type="xs:string" />
+              <xs:element name="transactionID" type="xs:string" />
+              <xs:element minOccurs="0" name="isPush" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="RecreateTransaction2ResType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="cmd-envelope:BaseServiceEnvelopeResponseType">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="responseCode" type="xs:string" />
+              <xs:element minOccurs="0" name="message" type="xs:string" />
+              <xs:element minOccurs="0" name="userID" type="xs:string" />
+              <xs:element minOccurs="0" name="transactionID" type="xs:string" />
+              <xs:element minOccurs="0" name="transactionTypeID" type="xs:string" />
+              <xs:element minOccurs="0" name="transactionData" type="xs:string" />
+              <xs:element minOccurs="0" name="transactionStatusID" type="xs:string" />
+              <xs:element minOccurs="0" name="challenge" type="xs:string" />
+              <xs:element minOccurs="0" name="isOnline" type="xs:string" />
+              <xs:element minOccurs="0" name="eSignerTypeID" type="xs:string" />
+              <xs:element minOccurs="0" name="channelID" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="SynchronizeOTPReqType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="cmd-envelope:BaseServiceEnvelopeRequestType">
+            <xs:sequence>
+              <xs:element name="operatorID" type="xs:string" />
+              <xs:element name="userID" type="xs:string" />
+              <xs:element name="otp1" type="xs:string" />
+              <xs:element name="otp2" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="SynchronizeOTPResType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="cmd-envelope:BaseServiceEnvelopeResponseType">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="responseCode" type="xs:string" />
+              <xs:element minOccurs="0" name="message" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="UnlockTokenReqType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="cmd-envelope:BaseServiceEnvelopeRequestType">
+            <xs:sequence>
+              <xs:element name="operatorID" type="xs:string" />
+              <xs:element name="tokenID" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="UnlockTokenResType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="cmd-envelope:BaseServiceEnvelopeResponseType">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="responseCode" type="xs:string" />
+              <xs:element minOccurs="0" name="message" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="VerifyOTPCRReqType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="cmd-envelope:BaseServiceEnvelopeRequestType">
+            <xs:sequence>
+              <xs:element name="userID" type="xs:string" />
+              <xs:element name="otp" type="xs:string" />
+              <xs:element minOccurs="0" name="transactionID" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="VerifyOTPCRResType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="cmd-envelope:BaseServiceEnvelopeResponseType">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="responseCode" type="xs:string" />
+              <xs:element minOccurs="0" name="message" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="VerifyOTPReqType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="cmd-envelope:BaseServiceEnvelopeRequestType">
+            <xs:sequence>
+              <xs:element name="userID" type="xs:string" />
+              <xs:element name="otp" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="VerifyOTPResType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="cmd-envelope:BaseServiceEnvelopeResponseType">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="responseCode" type="xs:string" />
+              <xs:element minOccurs="0" name="message" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="BlockUserReq" type="ns0:BlockUserReqType" />
+      <xs:element name="BlockUserRes" type="ns0:BlockUserResType" />
+      <xs:element name="CreateTransactionReq" type="ns0:CreateTransactionReqType" />
+      <xs:element name="CreateTransactionRes" type="ns0:CreateTransactionResType" />
+      <xs:element name="GetActivationCodeReq" type="ns0:GetActivationCodeReqType" />
+      <xs:element name="GetActivationCodeRes" type="ns0:GetActivationCodeResType" />
+      <xs:element name="LockTokenReq" type="ns0:LockTokenReqType" />
+      <xs:element name="LockTokenRes" type="ns0:LockTokenResType" />
+      <xs:element name="RecreateTransaction2Req" type="ns0:RecreateTransaction2ReqType" />
+      <xs:element name="RecreateTransaction2Res" type="ns0:RecreateTransaction2ResType" />
+      <xs:element name="SynchronizeOTPReq" type="ns0:SynchronizeOTPReqType" />
+      <xs:element name="SynchronizeOTPRes" type="ns0:SynchronizeOTPResType" />
+      <xs:element name="UnlockTokenReq" type="ns0:UnlockTokenReqType" />
+      <xs:element name="UnlockTokenRes" type="ns0:UnlockTokenResType" />
+      <xs:element name="VerifyOTPCRReq" type="ns0:VerifyOTPCRReqType" />
+      <xs:element name="VerifyOTPCRRes" type="ns0:VerifyOTPCRResType" />
+      <xs:element name="VerifyOTPReq" type="ns0:VerifyOTPReqType" />
+      <xs:element name="VerifyOTPRes" type="ns0:VerifyOTPResType" />
+    </xs:schema>
+    <xs:schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:cmd-envelope="shb/common/envelope/serviceenvelope/1.0" xmlns:cmd-header="shb/common/envelope/commonheader/1.0" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="shb/common/envelope/serviceenvelope/1.0" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="shb/common/envelope/commonheader/1.0" />
+      <xs:complexType name="BaseServiceEnvelopeRequestType">
+        <xs:sequence>
+          <xs:element ref="cmd-header:AppHdr" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="BaseServiceEnvelopeResponseType">
+        <xs:sequence>
+          <xs:element ref="cmd-header:AppHdr" />
+          <xs:element ref="cmd-header:RespSts" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ServiceBodyType">
+        <xs:sequence>
+          <xs:any minOccurs="0" maxOccurs="unbounded" namespace="##any" processContents="lax" />
+        </xs:sequence>
+        <xs:anyAttribute namespace="##any" processContents="lax" />
+      </xs:complexType>
+      <xs:complexType name="ServiceEnverlopType">
+        <xs:sequence>
+          <xs:element ref="cmd-header:AppHdr" />
+          <xs:element minOccurs="0" ref="cmd-header:RespSts" />
+          <xs:element name="ServiceBody" type="cmd-envelope:ServiceBodyType" />
+          <xs:element minOccurs="0" name="Other" type="xs:string" />
+        </xs:sequence>
+        <xs:anyAttribute namespace="##any" processContents="lax" />
+      </xs:complexType>
+      <xs:element name="BaseServiceEnvelopeRequest" type="cmd-envelope:BaseServiceEnvelopeRequestType" />
+      <xs:element name="BaseServiceEnvelopeResponse" type="cmd-envelope:BaseServiceEnvelopeResponseType" />
+      <xs:element name="ServiceEnverlop" type="cmd-envelope:ServiceEnverlopType" />
+      <xs:attribute name="actor" type="xs:anyURI" />
+      <xs:attribute name="mustUnderstand">
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean">
+            <xs:pattern value="0|1" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="CreateTransactionReq">
+    <wsdl:part name="input" element="ns0:CreateTransactionReq" />
+  </wsdl:message>
+  <wsdl:message name="CreateTransactionRes">
+    <wsdl:part name="out" element="ns0:CreateTransactionRes" />
+  </wsdl:message>
+  <wsdl:message name="SynchronizeOTPReq">
+    <wsdl:part name="input" element="ns0:SynchronizeOTPReq" />
+  </wsdl:message>
+  <wsdl:message name="SynchronizeOTPRes">
+    <wsdl:part name="out" element="ns0:SynchronizeOTPRes" />
+  </wsdl:message>
+  <wsdl:message name="RecreateTransaction2Req">
+    <wsdl:part name="input" element="ns0:RecreateTransaction2Req" />
+  </wsdl:message>
+  <wsdl:message name="RecreateTransaction2Res">
+    <wsdl:part name="out" element="ns0:RecreateTransaction2Res" />
+  </wsdl:message>
+  <wsdl:message name="UnlockTokenReq">
+    <wsdl:part name="input" element="ns0:UnlockTokenReq" />
+  </wsdl:message>
+  <wsdl:message name="UnlockTokenRes">
+    <wsdl:part name="out" element="ns0:UnlockTokenRes" />
+  </wsdl:message>
+  <wsdl:message name="LockTokenReq">
+    <wsdl:part name="input" element="ns0:LockTokenReq" />
+  </wsdl:message>
+  <wsdl:message name="LockTokenRes">
+    <wsdl:part name="out" element="ns0:LockTokenRes" />
+  </wsdl:message>
+  <wsdl:message name="VerifyOTPCRReq">
+    <wsdl:part name="input" element="ns0:VerifyOTPCRReq" />
+  </wsdl:message>
+  <wsdl:message name="VerifyOTPCRRes">
+    <wsdl:part name="out" element="ns0:VerifyOTPCRRes" />
+  </wsdl:message>
+  <wsdl:message name="BlockUserReq">
+    <wsdl:part name="input" element="ns0:BlockUserReq" />
+  </wsdl:message>
+  <wsdl:message name="BlockUserRes">
+    <wsdl:part name="out" element="ns0:BlockUserRes" />
+  </wsdl:message>
+  <wsdl:message name="GetActivationCodeReq">
+    <wsdl:part name="input" element="ns0:GetActivationCodeReq" />
+  </wsdl:message>
+  <wsdl:message name="GetActivationCodeRes">
+    <wsdl:part name="output" element="ns0:GetActivationCodeRes" />
+  </wsdl:message>
+  <wsdl:message name="VerifyOTPReq">
+    <wsdl:part name="input" element="ns0:VerifyOTPReq" />
+  </wsdl:message>
+  <wsdl:message name="VerifyOTPRes">
+    <wsdl:part name="out" element="ns0:VerifyOTPRes" />
+  </wsdl:message>
+  <wsdl:portType name="PortType">
+    <wsdl:operation name="CreateTransaction">
+      <wsdl:input message="tns:CreateTransactionReq" />
+      <wsdl:output message="tns:CreateTransactionRes" />
+    </wsdl:operation>
+    <wsdl:operation name="SynchronizeOTP">
+      <wsdl:input message="tns:SynchronizeOTPReq" />
+      <wsdl:output message="tns:SynchronizeOTPRes" />
+    </wsdl:operation>
+    <wsdl:operation name="RecreateTransaction2">
+      <wsdl:input message="tns:RecreateTransaction2Req" />
+      <wsdl:output message="tns:RecreateTransaction2Res" />
+    </wsdl:operation>
+    <wsdl:operation name="UnlockToken">
+      <wsdl:input message="tns:UnlockTokenReq" />
+      <wsdl:output message="tns:UnlockTokenRes" />
+    </wsdl:operation>
+    <wsdl:operation name="LockToken">
+      <wsdl:input message="tns:LockTokenReq" />
+      <wsdl:output message="tns:LockTokenRes" />
+    </wsdl:operation>
+    <wsdl:operation name="VerifyOTPCR">
+      <wsdl:input message="tns:VerifyOTPCRReq" />
+      <wsdl:output message="tns:VerifyOTPCRRes" />
+    </wsdl:operation>
+    <wsdl:operation name="BlockUser">
+      <wsdl:input message="tns:BlockUserReq" />
+      <wsdl:output message="tns:BlockUserRes" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActivationCode">
+      <wsdl:input message="tns:GetActivationCodeReq" />
+      <wsdl:output message="tns:GetActivationCodeRes" />
+    </wsdl:operation>
+    <wsdl:operation name="VerifyOTP">
+      <wsdl:input message="tns:VerifyOTPReq" />
+      <wsdl:output message="tns:VerifyOTPRes" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PortTypeEndpoint0Binding" type="tns:PortType">
+    <soap:binding transport="http://www.tibco.com/namespaces/ws/2004/soap/binding/JMS" />
+    <jms:binding messageFormat="bytes" />
+    <wsdl:operation name="CreateTransaction">
+      <soap:operation soapAction="/Services/Global/Utilities/TokenOTP/OperationImpl/TokenOTP-service0.serviceagent/PortTypeEndpoint0/CreateTransaction" style="document" soapActionRequired="true" />
+      <wsdl:input>
+        <soap:body use="literal" parts="input" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="out" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SynchronizeOTP">
+      <soap:operation soapAction="/Services/Global/Utilities/TokenOTP/OperationImpl/TokenOTP-service0.serviceagent/PortTypeEndpoint0/SynchronizeOTP" style="document" soapActionRequired="true" />
+      <wsdl:input>
+        <soap:body use="literal" parts="input" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="out" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecreateTransaction2">
+      <soap:operation soapAction="/Services/Global/Utilities/TokenOTP/OperationImpl/TokenOTP-service0.serviceagent/PortTypeEndpoint0/RecreateTransaction2" style="document" soapActionRequired="true" />
+      <wsdl:input>
+        <soap:body use="literal" parts="input" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="out" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnlockToken">
+      <soap:operation soapAction="/Services/Global/Utilities/TokenOTP/OperationImpl/TokenOTP-service0.serviceagent/PortTypeEndpoint0/UnlockToken" style="document" soapActionRequired="true" />
+      <wsdl:input>
+        <soap:body use="literal" parts="input" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="out" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LockToken">
+      <soap:operation soapAction="/Services/Global/Utilities/TokenOTP/OperationImpl/TokenOTP-service0.serviceagent/PortTypeEndpoint0/LockToken" style="document" soapActionRequired="true" />
+      <wsdl:input>
+        <soap:body use="literal" parts="input" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="out" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyOTPCR">
+      <soap:operation soapAction="/Services/Global/Utilities/TokenOTP/OperationImpl/TokenOTP-service0.serviceagent/PortTypeEndpoint0/VerifyOTPCR" style="document" soapActionRequired="true" />
+      <wsdl:input>
+        <soap:body use="literal" parts="input" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="out" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BlockUser">
+      <soap:operation soapAction="/Services/Global/Utilities/TokenOTP/OperationImpl/TokenOTP-service0.serviceagent/PortTypeEndpoint0/BlockUser" style="document" soapActionRequired="true" />
+      <wsdl:input>
+        <soap:body use="literal" parts="input" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="out" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActivationCode">
+      <soap:operation soapAction="/Services/Global/Utilities/TokenOTP/OperationImpl/TokenOTP-service0.serviceagent/PortTypeEndpoint0/GetActivationCode" style="document" soapActionRequired="true" />
+      <wsdl:input>
+        <soap:body use="literal" parts="input" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="output" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyOTP">
+      <soap:operation soapAction="/Services/Global/Utilities/TokenOTP/OperationImpl/TokenOTP-service0.serviceagent/PortTypeEndpoint0/VerifyOTP" style="document" soapActionRequired="true" />
+      <wsdl:input>
+        <soap:body use="literal" parts="input" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="out" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TokenOTP">
+    <wsdl:port name="PortTypeEndpoint0" binding="tns:PortTypeEndpoint0Binding">
+      <soap:address location="" />
+      <jms:connectionFactory>QueueConnectionFactory</jms:connectionFactory>
+      <jms:targetAddress destination="queue">utilities.tokenotp.v10</jms:targetAddress>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

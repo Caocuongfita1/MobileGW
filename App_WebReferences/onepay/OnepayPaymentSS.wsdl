@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Validate_OneBill_Query_Message_Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strval" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Validate_OneBill_Query_Message_ResponseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Validate_OneBill_Query_Message_ResponseResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Validate_OneBill_Payment_Message_Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strval" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Validate_OneBill_Payment_Message_ResponseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Validate_OneBill_Payment_Message_ResponseResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SHB_OneBill_Query">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProcessingCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProviderId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SHB_OneBill_QueryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SHB_OneBill_QueryResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SHB_OneBill_Payment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProcessingCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="SettlementAmount" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuditNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PayChannel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TerminalId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BankDescription" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProviderId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SHB_OneBill_PaymentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SHB_OneBill_PaymentResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SHBVerify">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CardNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CardHolderName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CardDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProviderId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="CurrencyCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Language" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientIp" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LocalDateTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AddInfor" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MAC" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SHBVerifyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SHBVerifyResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Query">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProviderId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="CurrencyCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="QueryTransactionId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MAC" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Validate_OneComm_Payment_Message_Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strval" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Validate_OneComm_Payment_Message_ResponseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Validate_OneComm_Payment_Message_ResponseResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SHB_OneComm_Payment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StatusCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BankTransactionId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AddInfo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SHB_OneComm_PaymentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SHB_OneComm_PaymentResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Refund">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProviderId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="CurrencyCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RefundTransactionId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LocalDateTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AddInfor" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MAC" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RefundResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RefundResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="Validate_OneBill_Query_Message_ResponseSoapIn">
+    <wsdl:part name="parameters" element="tns:Validate_OneBill_Query_Message_Response" />
+  </wsdl:message>
+  <wsdl:message name="Validate_OneBill_Query_Message_ResponseSoapOut">
+    <wsdl:part name="parameters" element="tns:Validate_OneBill_Query_Message_ResponseResponse" />
+  </wsdl:message>
+  <wsdl:message name="Validate_OneBill_Payment_Message_ResponseSoapIn">
+    <wsdl:part name="parameters" element="tns:Validate_OneBill_Payment_Message_Response" />
+  </wsdl:message>
+  <wsdl:message name="Validate_OneBill_Payment_Message_ResponseSoapOut">
+    <wsdl:part name="parameters" element="tns:Validate_OneBill_Payment_Message_ResponseResponse" />
+  </wsdl:message>
+  <wsdl:message name="SHB_OneBill_QuerySoapIn">
+    <wsdl:part name="parameters" element="tns:SHB_OneBill_Query" />
+  </wsdl:message>
+  <wsdl:message name="SHB_OneBill_QuerySoapOut">
+    <wsdl:part name="parameters" element="tns:SHB_OneBill_QueryResponse" />
+  </wsdl:message>
+  <wsdl:message name="SHB_OneBill_PaymentSoapIn">
+    <wsdl:part name="parameters" element="tns:SHB_OneBill_Payment" />
+  </wsdl:message>
+  <wsdl:message name="SHB_OneBill_PaymentSoapOut">
+    <wsdl:part name="parameters" element="tns:SHB_OneBill_PaymentResponse" />
+  </wsdl:message>
+  <wsdl:message name="SHBVerifySoapIn">
+    <wsdl:part name="parameters" element="tns:SHBVerify" />
+  </wsdl:message>
+  <wsdl:message name="SHBVerifySoapOut">
+    <wsdl:part name="parameters" element="tns:SHBVerifyResponse" />
+  </wsdl:message>
+  <wsdl:message name="QuerySoapIn">
+    <wsdl:part name="parameters" element="tns:Query" />
+  </wsdl:message>
+  <wsdl:message name="QuerySoapOut">
+    <wsdl:part name="parameters" element="tns:QueryResponse" />
+  </wsdl:message>
+  <wsdl:message name="Validate_OneComm_Payment_Message_ResponseSoapIn">
+    <wsdl:part name="parameters" element="tns:Validate_OneComm_Payment_Message_Response" />
+  </wsdl:message>
+  <wsdl:message name="Validate_OneComm_Payment_Message_ResponseSoapOut">
+    <wsdl:part name="parameters" element="tns:Validate_OneComm_Payment_Message_ResponseResponse" />
+  </wsdl:message>
+  <wsdl:message name="SHB_OneComm_PaymentSoapIn">
+    <wsdl:part name="parameters" element="tns:SHB_OneComm_Payment" />
+  </wsdl:message>
+  <wsdl:message name="SHB_OneComm_PaymentSoapOut">
+    <wsdl:part name="parameters" element="tns:SHB_OneComm_PaymentResponse" />
+  </wsdl:message>
+  <wsdl:message name="RefundSoapIn">
+    <wsdl:part name="parameters" element="tns:Refund" />
+  </wsdl:message>
+  <wsdl:message name="RefundSoapOut">
+    <wsdl:part name="parameters" element="tns:RefundResponse" />
+  </wsdl:message>
+  <wsdl:portType name="OnepayPaymentSSSoap">
+    <wsdl:operation name="Validate_OneBill_Query_Message_Response">
+      <wsdl:input message="tns:Validate_OneBill_Query_Message_ResponseSoapIn" />
+      <wsdl:output message="tns:Validate_OneBill_Query_Message_ResponseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Validate_OneBill_Payment_Message_Response">
+      <wsdl:input message="tns:Validate_OneBill_Payment_Message_ResponseSoapIn" />
+      <wsdl:output message="tns:Validate_OneBill_Payment_Message_ResponseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SHB_OneBill_Query">
+      <wsdl:input message="tns:SHB_OneBill_QuerySoapIn" />
+      <wsdl:output message="tns:SHB_OneBill_QuerySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SHB_OneBill_Payment">
+      <wsdl:input message="tns:SHB_OneBill_PaymentSoapIn" />
+      <wsdl:output message="tns:SHB_OneBill_PaymentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SHBVerify">
+      <wsdl:input message="tns:SHBVerifySoapIn" />
+      <wsdl:output message="tns:SHBVerifySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Query">
+      <wsdl:input message="tns:QuerySoapIn" />
+      <wsdl:output message="tns:QuerySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Validate_OneComm_Payment_Message_Response">
+      <wsdl:input message="tns:Validate_OneComm_Payment_Message_ResponseSoapIn" />
+      <wsdl:output message="tns:Validate_OneComm_Payment_Message_ResponseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SHB_OneComm_Payment">
+      <wsdl:input message="tns:SHB_OneComm_PaymentSoapIn" />
+      <wsdl:output message="tns:SHB_OneComm_PaymentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Refund">
+      <wsdl:input message="tns:RefundSoapIn" />
+      <wsdl:output message="tns:RefundSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="OnepayPaymentSSSoap" type="tns:OnepayPaymentSSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Validate_OneBill_Query_Message_Response">
+      <soap:operation soapAction="http://tempuri.org/Validate_OneBill_Query_Message_Response" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Validate_OneBill_Payment_Message_Response">
+      <soap:operation soapAction="http://tempuri.org/Validate_OneBill_Payment_Message_Response" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SHB_OneBill_Query">
+      <soap:operation soapAction="http://tempuri.org/SHB_OneBill_Query" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SHB_OneBill_Payment">
+      <soap:operation soapAction="http://tempuri.org/SHB_OneBill_Payment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SHBVerify">
+      <soap:operation soapAction="http://tempuri.org/SHBVerify" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Query">
+      <soap:operation soapAction="http://tempuri.org/Query" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Validate_OneComm_Payment_Message_Response">
+      <soap:operation soapAction="http://tempuri.org/Validate_OneComm_Payment_Message_Response" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SHB_OneComm_Payment">
+      <soap:operation soapAction="http://tempuri.org/SHB_OneComm_Payment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Refund">
+      <soap:operation soapAction="http://tempuri.org/Refund" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="OnepayPaymentSSSoap12" type="tns:OnepayPaymentSSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Validate_OneBill_Query_Message_Response">
+      <soap12:operation soapAction="http://tempuri.org/Validate_OneBill_Query_Message_Response" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Validate_OneBill_Payment_Message_Response">
+      <soap12:operation soapAction="http://tempuri.org/Validate_OneBill_Payment_Message_Response" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SHB_OneBill_Query">
+      <soap12:operation soapAction="http://tempuri.org/SHB_OneBill_Query" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SHB_OneBill_Payment">
+      <soap12:operation soapAction="http://tempuri.org/SHB_OneBill_Payment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SHBVerify">
+      <soap12:operation soapAction="http://tempuri.org/SHBVerify" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Query">
+      <soap12:operation soapAction="http://tempuri.org/Query" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Validate_OneComm_Payment_Message_Response">
+      <soap12:operation soapAction="http://tempuri.org/Validate_OneComm_Payment_Message_Response" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SHB_OneComm_Payment">
+      <soap12:operation soapAction="http://tempuri.org/SHB_OneComm_Payment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Refund">
+      <soap12:operation soapAction="http://tempuri.org/Refund" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OnepayPaymentSS">
+    <wsdl:port name="OnepayPaymentSSSoap" binding="tns:OnepayPaymentSSSoap">
+      <soap:address location="http://172.16.0.6:8002/OnepayPaymentSS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="OnepayPaymentSSSoap12" binding="tns:OnepayPaymentSSSoap12">
+      <soap12:address location="http://172.16.0.6:8002/OnepayPaymentSS.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

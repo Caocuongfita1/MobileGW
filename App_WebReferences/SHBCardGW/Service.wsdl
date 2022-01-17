@@ -1,0 +1,762 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Test">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="input" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TestResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCardInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mti" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="chanelID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="localTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ex1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ex2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ex3" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ex4" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ex5" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mac" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCardInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCardInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCardListByCustID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mti" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="chanelID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="localTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ex1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ex2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ex3" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ex4" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ex5" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mac" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCardListByCustIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCardListByCustIDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HandleCardStatusByCardNo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mti" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="chanelID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="localTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="handleStatus" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ex1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ex2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ex3" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ex4" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ex5" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mac" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HandleCardStatusByCardNoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HandleCardStatusByCardNoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MakeTranByVoice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mti" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="chanelID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="localTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="currency" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tranType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="amount" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newHotCard" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="reversalUtrnno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="isReversal" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mac" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MakeTranByVoiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MakeTranByVoiceResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MakeTranByVoiceByAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mti" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="chanelID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="localTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="acctNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="currency" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tranType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="amount" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newHotCard" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="reversalUtrnno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="isReversal" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mac" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MakeTranByVoiceByAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MakeTranByVoiceByAccountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetLimitTypeByCardNo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mti" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="chanelID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="localTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="limitType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mac" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetLimitTypeByCardNoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SetLimitTypeByCardNoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="TestSoapIn">
+    <wsdl:part name="parameters" element="tns:Test" />
+  </wsdl:message>
+  <wsdl:message name="TestSoapOut">
+    <wsdl:part name="parameters" element="tns:TestResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCardInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCardInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetCardInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCardInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCardListByCustIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCardListByCustID" />
+  </wsdl:message>
+  <wsdl:message name="GetCardListByCustIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCardListByCustIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="HandleCardStatusByCardNoSoapIn">
+    <wsdl:part name="parameters" element="tns:HandleCardStatusByCardNo" />
+  </wsdl:message>
+  <wsdl:message name="HandleCardStatusByCardNoSoapOut">
+    <wsdl:part name="parameters" element="tns:HandleCardStatusByCardNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="MakeTranByVoiceSoapIn">
+    <wsdl:part name="parameters" element="tns:MakeTranByVoice" />
+  </wsdl:message>
+  <wsdl:message name="MakeTranByVoiceSoapOut">
+    <wsdl:part name="parameters" element="tns:MakeTranByVoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="MakeTranByVoiceByAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:MakeTranByVoiceByAccount" />
+  </wsdl:message>
+  <wsdl:message name="MakeTranByVoiceByAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:MakeTranByVoiceByAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetLimitTypeByCardNoSoapIn">
+    <wsdl:part name="parameters" element="tns:SetLimitTypeByCardNo" />
+  </wsdl:message>
+  <wsdl:message name="SetLimitTypeByCardNoSoapOut">
+    <wsdl:part name="parameters" element="tns:SetLimitTypeByCardNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestHttpGetIn">
+    <wsdl:part name="input" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TestHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCardInfoHttpGetIn">
+    <wsdl:part name="mti" type="s:string" />
+    <wsdl:part name="chanelID" type="s:string" />
+    <wsdl:part name="localTime" type="s:string" />
+    <wsdl:part name="cardNo" type="s:string" />
+    <wsdl:part name="ex1" type="s:string" />
+    <wsdl:part name="ex2" type="s:string" />
+    <wsdl:part name="ex3" type="s:string" />
+    <wsdl:part name="ex4" type="s:string" />
+    <wsdl:part name="ex5" type="s:string" />
+    <wsdl:part name="mac" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCardInfoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCardListByCustIDHttpGetIn">
+    <wsdl:part name="mti" type="s:string" />
+    <wsdl:part name="chanelID" type="s:string" />
+    <wsdl:part name="localTime" type="s:string" />
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="type" type="s:string" />
+    <wsdl:part name="ex1" type="s:string" />
+    <wsdl:part name="ex2" type="s:string" />
+    <wsdl:part name="ex3" type="s:string" />
+    <wsdl:part name="ex4" type="s:string" />
+    <wsdl:part name="ex5" type="s:string" />
+    <wsdl:part name="mac" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCardListByCustIDHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="HandleCardStatusByCardNoHttpGetIn">
+    <wsdl:part name="mti" type="s:string" />
+    <wsdl:part name="chanelID" type="s:string" />
+    <wsdl:part name="localTime" type="s:string" />
+    <wsdl:part name="cardNo" type="s:string" />
+    <wsdl:part name="handleStatus" type="s:string" />
+    <wsdl:part name="ex1" type="s:string" />
+    <wsdl:part name="ex2" type="s:string" />
+    <wsdl:part name="ex3" type="s:string" />
+    <wsdl:part name="ex4" type="s:string" />
+    <wsdl:part name="ex5" type="s:string" />
+    <wsdl:part name="mac" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="HandleCardStatusByCardNoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="MakeTranByVoiceHttpGetIn">
+    <wsdl:part name="mti" type="s:string" />
+    <wsdl:part name="chanelID" type="s:string" />
+    <wsdl:part name="localTime" type="s:string" />
+    <wsdl:part name="cardNo" type="s:string" />
+    <wsdl:part name="currency" type="s:string" />
+    <wsdl:part name="tranType" type="s:string" />
+    <wsdl:part name="amount" type="s:string" />
+    <wsdl:part name="newHotCard" type="s:string" />
+    <wsdl:part name="reversalUtrnno" type="s:string" />
+    <wsdl:part name="isReversal" type="s:string" />
+    <wsdl:part name="mac" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MakeTranByVoiceHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="MakeTranByVoiceByAccountHttpGetIn">
+    <wsdl:part name="mti" type="s:string" />
+    <wsdl:part name="chanelID" type="s:string" />
+    <wsdl:part name="localTime" type="s:string" />
+    <wsdl:part name="acctNo" type="s:string" />
+    <wsdl:part name="currency" type="s:string" />
+    <wsdl:part name="tranType" type="s:string" />
+    <wsdl:part name="amount" type="s:string" />
+    <wsdl:part name="newHotCard" type="s:string" />
+    <wsdl:part name="reversalUtrnno" type="s:string" />
+    <wsdl:part name="isReversal" type="s:string" />
+    <wsdl:part name="mac" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MakeTranByVoiceByAccountHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SetLimitTypeByCardNoHttpGetIn">
+    <wsdl:part name="mti" type="s:string" />
+    <wsdl:part name="chanelID" type="s:string" />
+    <wsdl:part name="localTime" type="s:string" />
+    <wsdl:part name="cardNo" type="s:string" />
+    <wsdl:part name="limitType" type="s:string" />
+    <wsdl:part name="mac" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SetLimitTypeByCardNoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="TestHttpPostIn">
+    <wsdl:part name="input" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TestHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCardInfoHttpPostIn">
+    <wsdl:part name="mti" type="s:string" />
+    <wsdl:part name="chanelID" type="s:string" />
+    <wsdl:part name="localTime" type="s:string" />
+    <wsdl:part name="cardNo" type="s:string" />
+    <wsdl:part name="ex1" type="s:string" />
+    <wsdl:part name="ex2" type="s:string" />
+    <wsdl:part name="ex3" type="s:string" />
+    <wsdl:part name="ex4" type="s:string" />
+    <wsdl:part name="ex5" type="s:string" />
+    <wsdl:part name="mac" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCardInfoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCardListByCustIDHttpPostIn">
+    <wsdl:part name="mti" type="s:string" />
+    <wsdl:part name="chanelID" type="s:string" />
+    <wsdl:part name="localTime" type="s:string" />
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="type" type="s:string" />
+    <wsdl:part name="ex1" type="s:string" />
+    <wsdl:part name="ex2" type="s:string" />
+    <wsdl:part name="ex3" type="s:string" />
+    <wsdl:part name="ex4" type="s:string" />
+    <wsdl:part name="ex5" type="s:string" />
+    <wsdl:part name="mac" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCardListByCustIDHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="HandleCardStatusByCardNoHttpPostIn">
+    <wsdl:part name="mti" type="s:string" />
+    <wsdl:part name="chanelID" type="s:string" />
+    <wsdl:part name="localTime" type="s:string" />
+    <wsdl:part name="cardNo" type="s:string" />
+    <wsdl:part name="handleStatus" type="s:string" />
+    <wsdl:part name="ex1" type="s:string" />
+    <wsdl:part name="ex2" type="s:string" />
+    <wsdl:part name="ex3" type="s:string" />
+    <wsdl:part name="ex4" type="s:string" />
+    <wsdl:part name="ex5" type="s:string" />
+    <wsdl:part name="mac" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="HandleCardStatusByCardNoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="MakeTranByVoiceHttpPostIn">
+    <wsdl:part name="mti" type="s:string" />
+    <wsdl:part name="chanelID" type="s:string" />
+    <wsdl:part name="localTime" type="s:string" />
+    <wsdl:part name="cardNo" type="s:string" />
+    <wsdl:part name="currency" type="s:string" />
+    <wsdl:part name="tranType" type="s:string" />
+    <wsdl:part name="amount" type="s:string" />
+    <wsdl:part name="newHotCard" type="s:string" />
+    <wsdl:part name="reversalUtrnno" type="s:string" />
+    <wsdl:part name="isReversal" type="s:string" />
+    <wsdl:part name="mac" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MakeTranByVoiceHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="MakeTranByVoiceByAccountHttpPostIn">
+    <wsdl:part name="mti" type="s:string" />
+    <wsdl:part name="chanelID" type="s:string" />
+    <wsdl:part name="localTime" type="s:string" />
+    <wsdl:part name="acctNo" type="s:string" />
+    <wsdl:part name="currency" type="s:string" />
+    <wsdl:part name="tranType" type="s:string" />
+    <wsdl:part name="amount" type="s:string" />
+    <wsdl:part name="newHotCard" type="s:string" />
+    <wsdl:part name="reversalUtrnno" type="s:string" />
+    <wsdl:part name="isReversal" type="s:string" />
+    <wsdl:part name="mac" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MakeTranByVoiceByAccountHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SetLimitTypeByCardNoHttpPostIn">
+    <wsdl:part name="mti" type="s:string" />
+    <wsdl:part name="chanelID" type="s:string" />
+    <wsdl:part name="localTime" type="s:string" />
+    <wsdl:part name="cardNo" type="s:string" />
+    <wsdl:part name="limitType" type="s:string" />
+    <wsdl:part name="mac" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SetLimitTypeByCardNoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceSoap">
+    <wsdl:operation name="Test">
+      <wsdl:input message="tns:TestSoapIn" />
+      <wsdl:output message="tns:TestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCardInfo">
+      <wsdl:input message="tns:GetCardInfoSoapIn" />
+      <wsdl:output message="tns:GetCardInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCardListByCustID">
+      <wsdl:input message="tns:GetCardListByCustIDSoapIn" />
+      <wsdl:output message="tns:GetCardListByCustIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HandleCardStatusByCardNo">
+      <wsdl:input message="tns:HandleCardStatusByCardNoSoapIn" />
+      <wsdl:output message="tns:HandleCardStatusByCardNoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MakeTranByVoice">
+      <wsdl:input message="tns:MakeTranByVoiceSoapIn" />
+      <wsdl:output message="tns:MakeTranByVoiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MakeTranByVoiceByAccount">
+      <wsdl:input message="tns:MakeTranByVoiceByAccountSoapIn" />
+      <wsdl:output message="tns:MakeTranByVoiceByAccountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetLimitTypeByCardNo">
+      <wsdl:input message="tns:SetLimitTypeByCardNoSoapIn" />
+      <wsdl:output message="tns:SetLimitTypeByCardNoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ServiceHttpGet">
+    <wsdl:operation name="Test">
+      <wsdl:input message="tns:TestHttpGetIn" />
+      <wsdl:output message="tns:TestHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCardInfo">
+      <wsdl:input message="tns:GetCardInfoHttpGetIn" />
+      <wsdl:output message="tns:GetCardInfoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCardListByCustID">
+      <wsdl:input message="tns:GetCardListByCustIDHttpGetIn" />
+      <wsdl:output message="tns:GetCardListByCustIDHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HandleCardStatusByCardNo">
+      <wsdl:input message="tns:HandleCardStatusByCardNoHttpGetIn" />
+      <wsdl:output message="tns:HandleCardStatusByCardNoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MakeTranByVoice">
+      <wsdl:input message="tns:MakeTranByVoiceHttpGetIn" />
+      <wsdl:output message="tns:MakeTranByVoiceHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MakeTranByVoiceByAccount">
+      <wsdl:input message="tns:MakeTranByVoiceByAccountHttpGetIn" />
+      <wsdl:output message="tns:MakeTranByVoiceByAccountHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetLimitTypeByCardNo">
+      <wsdl:input message="tns:SetLimitTypeByCardNoHttpGetIn" />
+      <wsdl:output message="tns:SetLimitTypeByCardNoHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ServiceHttpPost">
+    <wsdl:operation name="Test">
+      <wsdl:input message="tns:TestHttpPostIn" />
+      <wsdl:output message="tns:TestHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCardInfo">
+      <wsdl:input message="tns:GetCardInfoHttpPostIn" />
+      <wsdl:output message="tns:GetCardInfoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCardListByCustID">
+      <wsdl:input message="tns:GetCardListByCustIDHttpPostIn" />
+      <wsdl:output message="tns:GetCardListByCustIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HandleCardStatusByCardNo">
+      <wsdl:input message="tns:HandleCardStatusByCardNoHttpPostIn" />
+      <wsdl:output message="tns:HandleCardStatusByCardNoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MakeTranByVoice">
+      <wsdl:input message="tns:MakeTranByVoiceHttpPostIn" />
+      <wsdl:output message="tns:MakeTranByVoiceHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MakeTranByVoiceByAccount">
+      <wsdl:input message="tns:MakeTranByVoiceByAccountHttpPostIn" />
+      <wsdl:output message="tns:MakeTranByVoiceByAccountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetLimitTypeByCardNo">
+      <wsdl:input message="tns:SetLimitTypeByCardNoHttpPostIn" />
+      <wsdl:output message="tns:SetLimitTypeByCardNoHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Test">
+      <soap:operation soapAction="http://tempuri.org/Test" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCardInfo">
+      <soap:operation soapAction="http://tempuri.org/GetCardInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCardListByCustID">
+      <soap:operation soapAction="http://tempuri.org/GetCardListByCustID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HandleCardStatusByCardNo">
+      <soap:operation soapAction="http://tempuri.org/HandleCardStatusByCardNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeTranByVoice">
+      <soap:operation soapAction="http://tempuri.org/MakeTranByVoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeTranByVoiceByAccount">
+      <soap:operation soapAction="http://tempuri.org/MakeTranByVoiceByAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetLimitTypeByCardNo">
+      <soap:operation soapAction="http://tempuri.org/SetLimitTypeByCardNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Test">
+      <soap12:operation soapAction="http://tempuri.org/Test" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCardInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetCardInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCardListByCustID">
+      <soap12:operation soapAction="http://tempuri.org/GetCardListByCustID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HandleCardStatusByCardNo">
+      <soap12:operation soapAction="http://tempuri.org/HandleCardStatusByCardNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeTranByVoice">
+      <soap12:operation soapAction="http://tempuri.org/MakeTranByVoice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeTranByVoiceByAccount">
+      <soap12:operation soapAction="http://tempuri.org/MakeTranByVoiceByAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetLimitTypeByCardNo">
+      <soap12:operation soapAction="http://tempuri.org/SetLimitTypeByCardNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceHttpGet" type="tns:ServiceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="Test">
+      <http:operation location="/Test" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCardInfo">
+      <http:operation location="/GetCardInfo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCardListByCustID">
+      <http:operation location="/GetCardListByCustID" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HandleCardStatusByCardNo">
+      <http:operation location="/HandleCardStatusByCardNo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeTranByVoice">
+      <http:operation location="/MakeTranByVoice" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeTranByVoiceByAccount">
+      <http:operation location="/MakeTranByVoiceByAccount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetLimitTypeByCardNo">
+      <http:operation location="/SetLimitTypeByCardNo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceHttpPost" type="tns:ServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="Test">
+      <http:operation location="/Test" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCardInfo">
+      <http:operation location="/GetCardInfo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCardListByCustID">
+      <http:operation location="/GetCardListByCustID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HandleCardStatusByCardNo">
+      <http:operation location="/HandleCardStatusByCardNo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeTranByVoice">
+      <http:operation location="/MakeTranByVoice" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeTranByVoiceByAccount">
+      <http:operation location="/MakeTranByVoiceByAccount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetLimitTypeByCardNo">
+      <http:operation location="/SetLimitTypeByCardNo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service">
+    <wsdl:port name="ServiceSoap" binding="tns:ServiceSoap">
+      <soap:address location="http://10.4.29.178:6868/Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceSoap12" binding="tns:ServiceSoap12">
+      <soap12:address location="http://10.4.29.178:6868/Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceHttpGet" binding="tns:ServiceHttpGet">
+      <http:address location="http://10.4.29.178:6868/Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceHttpPost" binding="tns:ServiceHttpPost">
+      <http:address location="http://10.4.29.178:6868/Service.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

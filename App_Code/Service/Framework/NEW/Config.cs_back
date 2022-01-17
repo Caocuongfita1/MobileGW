@@ -1,0 +1,1338 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace mobileGW.Service.Framework
+{
+    /// <summary>
+    /// Summary description for Config.
+    /// </summary>
+    public class Config
+    {
+
+        #region "For ESB config"
+
+        /// <summary>
+        /// linhtn add new 2017 03 23
+        /// </summary>
+        public static string FinancialStatus_NORMAL_CASA = "NORMAL";
+        public static string FinancialStatus_NO_DEBIT_CASA = "NO_DEBIT";
+        public static string FinancialStatus_NO_CREDIT_CASA = "NO_CREDIT";
+        public static string FinancialStatus_BLOCKED_CASA = "BLOCKED";
+
+        //DECODE(C.INACT_ST,'Y','INACTIVE','ACTIVE') INACT_ST --Account Status Change
+        public static string AccountStatus_ACTIVE_CASA = "ACTIVE";
+        public static string AccountStatus_IN_ACTIVE_CASA = "INACTIVE";
+
+        public static string IS_CO_HOLDER = "1";
+        public static string CCYCD_VND = "VND";
+
+
+        public static string SharedKeyMD5 = "A2C75E5C3A4C0E23D01871A7DB4A8D9E";
+
+        #endregion "For ESB config"
+
+
+        #region "REPLY MESSAGE TEMPLATE"
+        #region "Other"
+        public static String[] CMD_IGNORE_CHECK = new String[] {
+            "CHECK_LOGIN","SET_FINGER_PRINT","LOGIN_FP"
+            , "ACTIVE_MOB", "ACTIVE_MOB_CONFIRM", "GET_CUR_VER"
+            , "GET_LOCATION_LIST"
+            , "GET_LOCATION_LIST_BY_ADDRESS"
+            , "GET_FX_RATE"
+            , "GET_TIDE_RATE"};
+
+        public static String COL_DLMT = "#"; //Dau ngan cach NAME va VALUE: (Ex: NAME COL_DLMT VALUE). ALT 171
+        public static String ROW_DLMT = "|"; //Dau ngan cach cac truong (Ex: NAME1 COL_DLMT VALUE1 ROW_DLMT NAME2 COL_DLMT VALUE2). ALT 181
+        public static String COL_REC_DLMT = "$"; //Dau ngan cach cac truong trong 1 RECORD . ALT 201
+        public static String ROW_REC_DLMT = "^"; //Dau ngan cach cac RECORD trong truong hop tra ve nhieu ban ghi. ALT 191
+
+        public static Double LIMIT_MIN_BALANCE_STAFF = 50000; // TOI THIEU NHAN VIEN PHAI DE LAI 50K.
+        public static String ERR_CODE_VAL = "{ERR_CODE}";
+        public static String ERR_DESC_VAL = "{ERR_DESC}";
+
+        public const String TYPE_CASA_PRODUCT = "001";
+        public const String TYPE_TIDE_PRODUCT = "002";
+        public const String TYPE_LOAN_PRODUCT = "003";
+
+        //anhnd2
+        public const String CD_EB_TRANS_DONE = "0000";
+        public const String CD_EB_TRANS_DONE_BEN_FAILED = "1001";
+        public const String CD_EB_TRANS_DONE_BEN_EXIST = "1002";
+        public const String CD_EB_TRANS_TIME_OUT = "1068";
+        public const String CD_EB_TRANS_ERR_GENERAL = "9999";
+
+
+
+        public static String ERR_CODE_DONE = "00";
+
+        //linhtn 16 jul 2016
+
+        public static String ERR_CODE_REVERT = "RV"; //
+
+
+        public static String ERR_CODE_ACTIVE_CODE_EXPIRE = "97";
+        public static String NOT_FOUND = "NOT_FOUND";
+        public static String ERR_CODE_INVALID_LOGIN = "99";
+        public static String ERR_CODE_GENERAL = "99";
+        public static String ERR_CODE_INVALID_ACTIVE_CODE = "98";
+        public static String ERR_CODE_TIMEOUT = "08";
+        public static String ERR_CODE_TOKEN_INVALID = "77";
+
+
+        public static String ERR_MSG_VIOLATE_MAX_TIDE_OL = "ERR_CODE" + COL_DLMT + "2000" + ROW_DLMT + "ERR_DESC" + COL_DLMT + "VUOT QUA SO LUONG SO TIET KIEM ONLINE CHO PHEP BOOK";
+
+        //anhnd2 03/07/2016 
+
+
+        public static String SUCCESS_MSG_GENERAL = "ERR_CODE" + COL_DLMT + "00" + ROW_DLMT + "ERR_DESC" + COL_DLMT + "SUCCESSFUL";
+
+
+        public static String ERR_MSG_GENERAL = "ERR_CODE" + COL_DLMT + "99" + ROW_DLMT + "ERR_DESC" + COL_DLMT + "LOI KHONG XAC DINH";
+
+        //anhnd2 02/12/2015 them err_code 
+        public static String ERR_MSG_TIMEOUT = "ERR_CODE" + COL_DLMT + "08" + ROW_DLMT + "ERR_DESC" + COL_DLMT + "TIME OUT HOAC EXCEPTION DAU SML";
+
+        //DAU 8: DUNG BAO LOI VE PHAN POSTPAID
+        public static String ERR_MSG_POSTPAID_PARTIAL_AMOUNT = "ERR_CODE" + COL_DLMT + "80" + ROW_DLMT + "ERR_DESC" + COL_DLMT + "HOA DON KHONG CHO THANH TOAN 1 PHAN";
+
+        public static String ERR_MSG_NO_DATA_FOUND = "ERR_CODE" + COL_DLMT + "00" + ROW_DLMT + "ERR_DESC" + COL_DLMT + "NO DATA FOUND" +
+                                                    ROW_DLMT + "RECORD" + COL_DLMT + "{NULL}";
+
+        public static String ERR_MSG_INVALID_TRANPWD = "ERR_CODE" + COL_DLMT + "11" + ROW_DLMT + "ERR_DESC" + COL_DLMT + "INVALID TRANPWD";
+
+        public static String ERR_MSG_INVALID_CURRENT_PWD = "ERR_CODE" + COL_DLMT + "12" + ROW_DLMT + "ERR_DESC" + COL_DLMT + "INVALID CURRENT PASS";
+        public static String ERR_CODE_INVALID_CURRENT_PWD = "12";
+
+        public static String ERR_MSG_VIOLATE_LIMIT = "ERR_CODE" + COL_DLMT + "13" + ROW_DLMT + "ERR_DESC" + COL_DLMT + "VIOLATE LIMIT";
+
+        public static String ERR_MSG_VIOLATE_LIMIT_PERTRAN = "ERR_CODE" + COL_DLMT + "1301" + ROW_DLMT + "ERR_DESC" + COL_DLMT + "VIOLATE LIMIT PERTRAN";
+
+        public static String ERR_MSG_INVALID_SECURE_CODE = "ERR_CODE" + COL_DLMT + "14" + ROW_DLMT + "ERR_DESC" + COL_DLMT + "INVALID SECURE CODE";
+
+        public static String ERR_MSG_INVALID_MOBILE_NO = "ERR_CODE" + COL_DLMT + "16" + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}";
+
+        public static String ERR_MSG_INVALID_CARD_NO = "ERR_CODE" + COL_DLMT + "17" + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}";
+
+        public static String ERR_MSG_INVALID_DES_ACCTNO = "ERR_CODE" + COL_DLMT + "18" + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}";
+
+        public static String ERR_MSG_INVALID_ACTIVE_CODE = "ERR_CODE" + COL_DLMT + "19" + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}";
+
+        public static String ERR_MSG_INVALID_TOKEN = "ERR_CODE" + COL_DLMT + "77" + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}";
+
+        public static String INVALID_BILL_CODE = "15";
+
+
+
+        public static String BEGIN_TAG = "<MSG>";
+        public static String END_TAG = "</MSG>";
+        #endregion "other"
+
+
+        #region "STOCK"
+        public static String GET_STOCK_BRANCH_LIST = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+            + ROW_DLMT + "RECORD" + COL_DLMT + "{RECORD}";
+        #endregion "STOCK"
+
+        #region "TIDE ONLINE"
+        public static String GET_ACCT_TIDE_OL_INFO_LIST = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
++ ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
++ ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
++ ROW_DLMT + "TOTAL_AMOUNT" + COL_DLMT + "{TOTAL_AMOUNT}"
++ ROW_DLMT + "RECORD" + COL_DLMT + "{RECORD}"
+;
+        #endregion"TIDE ONLINE"
+
+
+        #region "CHARITY"
+        public static String GET_CHARITY_LIST = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "RECORD" + COL_DLMT + "{RECORD}";
+        #endregion "CHARITY"
+
+
+        #region "Payment"
+        public static String GET_CATEGORY_BY_TRAN_TYPE = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+                + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+                + ROW_DLMT + "RECORD" + COL_DLMT + "{RECORD}";
+
+        public static String GET_SERVICES = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+        + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+        + ROW_DLMT + "RECORD" + COL_DLMT + "{RECORD}";
+
+        public static String GET_LIST_MOBILE_PRICE = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+        + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+        + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+        + ROW_DLMT + "PARTNER_ID" + COL_DLMT + "{PARTNER_ID}"
+        + ROW_DLMT + "CATEGORY_ID" + COL_DLMT + "{CATEGORY_ID}"
+        + ROW_DLMT + "SERVICE_ID" + COL_DLMT + "{SERVICE_ID}"
+        + ROW_DLMT + "CATEGORY_CODE" + COL_DLMT + "{CATEGORY_CODE}"
+        + ROW_DLMT + "SERVICE_CODE" + COL_DLMT + "{SERVICE_CODE}"
+       + ROW_DLMT + "RECORD" + COL_DLMT + "{RECORD}";
+
+
+        public static String GET_PRICE_TOPUP_OTHER = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+   + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+   + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+   + ROW_DLMT + "PARTNER_ID" + COL_DLMT + "{PARTNER_ID}"
+   + ROW_DLMT + "CATEGORY_ID" + COL_DLMT + "{CATEGORY_ID}"
+   + ROW_DLMT + "SERVICE_ID" + COL_DLMT + "{SERVICE_ID}"
+   + ROW_DLMT + "CATEGORY_CODE" + COL_DLMT + "{CATEGORY_CODE}"
+   + ROW_DLMT + "SERVICE_CODE" + COL_DLMT + "{SERVICE_CODE}"
+  + ROW_DLMT + "RECORD" + COL_DLMT + "{RECORD}";
+
+
+        public static String GET_BILL_INFO = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+             + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+             + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+             + ROW_DLMT + "BILL_ID" + COL_DLMT + "{BILL_ID}"
+ + ROW_DLMT + "BILL_AMOUNT" + COL_DLMT + "{BILL_AMOUNT}"
+ + ROW_DLMT + "BILL_INFO_EXT1" + COL_DLMT + "{BILL_INFO_EXT1}"
+ + ROW_DLMT + "BILL_INFO_EXT2" + COL_DLMT + "{BILL_INFO_EXT2}"
+
+             ;
+
+
+        #endregion "Payment"
+
+        #region "UTIL"
+
+        public static String GET_BEN_LIST_CUSTID_TRANTYPE = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
++ ROW_DLMT + "TRAN_TYPE" + COL_DLMT + "{TRAN_TYPE}"
+            + ROW_DLMT + "RECORD" + COL_DLMT + "{RECORD}";
+
+        public static String HANDLE_BENLIST = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+           + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+           + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+           + ROW_DLMT + "TRAN_TYPE" + COL_DLMT + "{TRAN_TYPE}";
+
+        public static String GET_BANK_CODE_CITAD = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+           + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
++ ROW_DLMT + "RECORD" + COL_DLMT + "{RECORD}";
+
+        public static String GET_CITY_CITAD = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+          + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
++ ROW_DLMT + "RECORD" + COL_DLMT + "{RECORD}";
+
+        public static String GET_BANK_BRANCH_CITAD = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+  + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
++ ROW_DLMT + "RECORD" + COL_DLMT + "{RECORD}";
+
+        public static String GET_BANK_CODE_247_AC2AC = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+  + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+  + ROW_DLMT + "RECORD" + COL_DLMT + "{RECORD}";
+
+        public static String GET_247_ACCT_HOLDER = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+  + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+  + ROW_DLMT + "ACCT_NO" + COL_DLMT + "{ACCT_NO}"
+  + ROW_DLMT + "BEN_NAME" + COL_DLMT + "{BEN_NAME}";
+
+        public static String GET_247_CARD_HOLDER = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+  + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+  + ROW_DLMT + "CARD_NO" + COL_DLMT + "{CARD_NO}"
+  + ROW_DLMT + "BEN_NAME" + COL_DLMT + "{BEN_NAME}"
+   + ROW_DLMT + "BANK_NAME" + COL_DLMT + "{BANK_NAME}";
+
+        public static String GET_TIDE_INTEREST_RATE = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+   + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+   + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+   + ROW_DLMT + "RECORD" + COL_DLMT + "{RECORD}";
+
+        //Trong đó:
+        // RECORD: CCYCD^TENURE^UNIT_TENURE^INT_RATE
+
+
+        public static String TIDEBOOKING = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+     + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+     + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+     + ROW_DLMT + "TRANID" + COL_DLMT + "{TRANID}"
+     + ROW_DLMT + "TRAN_DATE" + COL_DLMT + "{TRAN_DATE}"
+     + ROW_DLMT + "TIDE_ACCT" + COL_DLMT + "{TIDE_ACCT}"
+     + ROW_DLMT + "MAT_DT" + COL_DLMT + "{MAT_DT}"
+     + ROW_DLMT + "INT_RATE" + COL_DLMT + "{INT_RATE}"
+     + ROW_DLMT + "INT_AMT" + COL_DLMT + "{INT_AMT}"
+     + ROW_DLMT + "VAL_DT" + COL_DLMT + "{VAL_DT}"
+     ;
+
+        public static String TIDEWDL = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+                    + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+                    + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+                    + ROW_DLMT + "TRANID" + COL_DLMT + "{TRANID}"
+                    + ROW_DLMT + "TRAN_DATE" + COL_DLMT + "{TRAN_DATE}"
+                    + ROW_DLMT + "INT_AMT" + COL_DLMT + "{INT_AMT}"
+            ;
+
+        //linhtn 20160720
+        public static String GETGET_FEE_BY_TRAN_TYPE = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+           + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+           + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+            + ROW_DLMT + "TRAN_TYPE" + COL_DLMT + "{TRAN_TYPE}"
+           + ROW_DLMT + "TOTAL_FEE" + COL_DLMT + "{TOTAL_FEE}";
+
+
+        public static String SETTING = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+                 + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+                 + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+
+         ;
+
+        public static String CHECK_REF_INVITE = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}";
+
+        public static String UPDATE_REF_INVITE = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+          + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}";
+
+
+
+        public static String GET_INBOX_OUTBOX = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
++ ROW_DLMT + "RECORD" + COL_DLMT + "{RECORD}";
+
+        public static String SEND_MAIL_OUTBOX = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            ;
+        public static String DELETE_MAIL = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+                    + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}";
+
+
+
+
+        #endregion "UTIL"
+
+        #region "Enquiry"
+
+        public static string ENQ_TYPE_LAST5 = "LAST5";
+        public static string ENQ_TYPE_TODAY = "TODAY";
+        public static string ENQ_TYPE_THIS_MONTH = "THIS_MONTH";
+        public static string LAST_MONTH = "LAST_MONTH";
+        public static string ENQ_TYPE_THIS_WEEK = "THIS_WEEK";
+        public static string ENQ_TYPE_LAST_WEEK = "LAST_WEEK";
+        public static string ENQ_TYPE_FR_2_TO_DATE = "FR_2_TO_DATE";
+
+
+        public static string OUT_CUR = "OUT_CUR";
+
+        public static String GET_ACCT_LIST_HOMESCREEN_N = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+            + ROW_DLMT + "CASA_TOTAL" + COL_DLMT + "{CASA_TOTAL}"
+            + ROW_DLMT + "TIDE_TOTAL" + COL_DLMT + "{TIDE_TOTAL}"
+            + ROW_DLMT + "LOAN_TOTAL" + COL_DLMT + "{LOAN_TOTAL}";
+
+        public static String GET_ACCT_BALANCE_HOMESCREEN_N = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+            + ROW_DLMT + "ACCTNO" + COL_DLMT + "{ACCTNO}"
+            + ROW_DLMT + "AVAIL_BALANCE" + COL_DLMT + "{AVAIL_BALANCE}"
+            + ROW_DLMT + "CURR_BALANCE" + COL_DLMT + "{CURR_BALANCE}";
+
+
+        public static String GET_ACCT_LIST_QRY_N = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+            + ROW_DLMT + "CASA_TOTAL" + COL_DLMT + "{CASA_TOTAL}"
+            + ROW_DLMT + "TIDE_TOTAL" + COL_DLMT + "{TIDE_TOTAL}"
+            + ROW_DLMT + "LOAN_TOTAL" + COL_DLMT + "{LOAN_TOTAL}"
+            + ROW_DLMT + "RECORD" + COL_DLMT + "{RECORD}"
+            ;
+
+
+        public static String GET_ACCT_CASA_INFO_N = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+            + ROW_DLMT + "ACCT_CURR_BALANCE" + COL_DLMT + "{ACCT_CURR_BALANCE}"
+            + ROW_DLMT + "ACCT_AVAI_BALANCE" + COL_DLMT + "{ACCT_AVAI_BALANCE}"
+            + ROW_DLMT + "ERR_CODE_BALANCE_HIST" + COL_DLMT + "{ERR_CODE_BALANCE_HIST}"
+            + ROW_DLMT + "ERR_CODE_RECORD_ACTIVITY" + COL_DLMT + "{ERR_CODE_RECORD_ACTIVITY}"
+            + ROW_DLMT + "RECORD_BALANCE_HIST" + COL_DLMT + "{RECORD_BALANCE_HIST}"
+            + ROW_DLMT + "RECORD_ACTIVITY" + COL_DLMT + "{RECORD_ACTIVITY}"
+            ;
+
+        public static String GET_ACCT_CASA_TRAN_BY_ENQ_TYPE_N = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+            + ROW_DLMT + "RECORD_ACTIVITY" + COL_DLMT + "{RECORD_ACTIVITY}"
+            ;
+
+
+        public static String GET_ACCT_TIDE_INFO_N = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
++ ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
++ ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
++ ROW_DLMT + "ACCTNO" + COL_DLMT + "{ACCTNO}"
++ ROW_DLMT + "CCYCD" + COL_DLMT + "{CCYCD}"
++ ROW_DLMT + "PRODUCT_CODE" + COL_DLMT + "{PRODUCT_CODE}"
++ ROW_DLMT + "CURR_PRIN_AMT" + COL_DLMT + "{CURR_PRIN_AMT}"
+
++ ROW_DLMT + "TENURE" + COL_DLMT + "{TENURE}"
++ ROW_DLMT + "UNIT_TENURE" + COL_DLMT + "{UNIT_TENURE}"
++ ROW_DLMT + "INT_RATE" + COL_DLMT + "{INT_RATE}"
++ ROW_DLMT + "INT_AMT" + COL_DLMT + "{INT_AMT}"
++ ROW_DLMT + "MAT_DT" + COL_DLMT + "{MAT_DT}"
++ ROW_DLMT + "VAL_DT" + COL_DLMT + "{VAL_DT}"
++ ROW_DLMT + "AUTO_REN_NO" + COL_DLMT + "{AUTO_REN_NO}"
++ ROW_DLMT + "CURR_MAT_AMT" + COL_DLMT + "{CURR_MAT_AMT}"
++ ROW_DLMT + "IS_SHOW_INTEREST" + COL_DLMT + "{IS_SHOW_INTEREST}"
++ ROW_DLMT + "ALLOW_TIDEWDL_ONLINE" + COL_DLMT + "{ALLOW_TIDEWDL_ONLINE}"
++ ROW_DLMT + "INSTRUCTION" + COL_DLMT + "{INSTRUCTION}"
++ ROW_DLMT + "DEPOSIT_NO" + COL_DLMT + "{DEPOSIT_NO}"
+;
+
+
+        public static String GET_ACCT_LOAN_INFO_N = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
++ ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
++ ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
++ ROW_DLMT + "ACCTNO" + COL_DLMT + "{ACCTNO}"
++ ROW_DLMT + "CCYCD" + COL_DLMT + "{CCYCD}"
+ + ROW_DLMT + "OBALANCE" + COL_DLMT + "{OBALANCE}"
+ + ROW_DLMT + "OUT_STANDING" + COL_DLMT + "{OUT_STANDING}"
++ ROW_DLMT + "OPENDT" + COL_DLMT + "{OPENDT}"
++ ROW_DLMT + "EXPDT" + COL_DLMT + "{EXPDT}"
++ ROW_DLMT + "NEXT_INT_DUE" + COL_DLMT + "{NEXT_INT_DUE}"
++ ROW_DLMT + "NEXT_PRIN_DUE" + COL_DLMT + "{NEXT_PRIN_DUE}"
++ ROW_DLMT + "NEXT_AMT_PRIN_DUE" + COL_DLMT + "{NEXT_AMT_PRIN_DUE}"
++ ROW_DLMT + "NEXT_AMT_INT_DUE" + COL_DLMT + "{NEXT_AMT_INT_DUE}"
++ ROW_DLMT + "SINT" + COL_DLMT + "{SINT}"
++ ROW_DLMT + "ERR_CODE_RECORD_ACTIVITY" + COL_DLMT + "{ERR_CODE_RECORD_ACTIVITY}"
++ ROW_DLMT + "RECORD_ACTIVITY" + COL_DLMT + "{RECORD_ACTIVITY}";
+
+
+        public static String GET_ACCT_LN_TRAN_BY_ENQ_TYPE_N = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+           + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+           + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+           + ROW_DLMT + "ERR_CODE_RECORD_ACTIVITY" + COL_DLMT + "{ERR_CODE_RECORD_ACTIVITY}"
++ ROW_DLMT + "RECORD_ACTIVITY" + COL_DLMT + "{RECORD_ACTIVITY}"
+            ;
+
+        public static String GET_ACCT_LN_REPAYMENT_SCHEDULE = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+            + ROW_DLMT + "RECORD" + COL_DLMT + "{RECORD}"
+            ;
+
+
+
+
+        public static String GET_ACCT_BALANCE_LIST_N = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+            + ROW_DLMT + "RECORD" + COL_DLMT + "{RECORD}";
+
+        public static String GET_ACCT_LIST_RECEIVE = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+        + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+        + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+        + ROW_DLMT + "RECORD" + COL_DLMT + "{RECORD}";
+
+        public static String GET_BENNAME_FROM_CASA_ACCOUNT = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
++ ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
++ ROW_DLMT + "DES_ACCT" + COL_DLMT + "{DES_ACCT}"
++ ROW_DLMT + "DES_NAME" + COL_DLMT + "{DES_NAME}";
+
+
+       
+
+        public static String GET_LOCATION_LIST = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "TYPE" + COL_DLMT + "{TYPE}"
+            + ROW_DLMT + "CUR_LAT" + COL_DLMT + "{CUR_LAT}"
+            + ROW_DLMT + "CUR_LONG" + COL_DLMT + "{CUR_LONG}"
+            + ROW_DLMT + "RECORD" + COL_DLMT + "{RECORD}";
+
+
+        public static String GET_CARD_TRAN_BY_ENQ_TYPE = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "RECORD_ACTIVITY" + COL_DLMT + "{RECORD_ACTIVITY}";
+
+
+        public static String GET_DEBIT_CARD_INFO = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+//+ ROW_DLMT + "ACCTNO" + COL_DLMT + "{ACCTNO}"
+//+ ROW_DLMT + "BALANCE" + COL_DLMT + "{BALANCE}"
+//+ ROW_DLMT + "OPEN_DATE" + COL_DLMT + "{OPEN_DATE}"
+//+ ROW_DLMT + "STATUS" + COL_DLMT + "{STATUS}"
++ ROW_DLMT + "ERR_CODE_RECORD_ACTIVITY" + COL_DLMT + "{ERR_CODE_RECORD_ACTIVITY}"
++ ROW_DLMT + "RECORD_ACTIVITY" + COL_DLMT + "{RECORD_ACTIVITY}";
+
+
+        public static String GET_FX_RATE = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
++ ROW_DLMT + "RECORD" + COL_DLMT + "{RECORD}";
+
+        public static String GET_TIDE_RATE = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
++ ROW_DLMT + "RECORD" + COL_DLMT + "{RECORD}";
+
+
+        #endregion "Enquiry"
+
+        #region "TRAN_TYPE"
+
+        public const string TRAN_TYPE_SELF = "SELF";
+        public const string TRAN_TYPE_INTRA = "INTRA";
+        public const string TRAN_TYPE_TOPUP_MOBILE = "TOPUP_MOBILE";
+        public const string TRAN_TYPE_TOPUP_OTHER = "TOPUP_OTHER";
+        public const string TRAN_TYPE_BILL_MOBILE = "BILL_MOBILE";
+        public const string TRAN_TYPE_BILL_OTHER = "BILL_OTHER";
+        public const string TRAN_TYPE_ECOM = "ECOM";
+        public const string TRAN_TYPE_BATCH = "BATCH";
+        public const string TRAN_TYPE_DOMESTIC = "DOMESTIC";
+        public const string TRAN_TYPE_BEN_247AC = "BEN_247AC";
+        public const string TRAN_TYPE_BEN_247CARD = "BEN_247CARD";
+        public const string TRAN_TYPE_ACQ_247AC = "ACQ_247AC";
+        public const string TRAN_TYPE_ACQ_247CARD = "ACQ_247CARD";
+        public const string TRAN_TYPE_CREDIT_PAYMENT = "CREDIT_PAYMENT";
+        public const string TRAN_TYPE_TOPUP_SHS = "TOPUP_SHS";
+        public const string TRAN_TYPE_TOPUP_SHBS = "TOPUP_SHBS";
+        public const string TRAN_TYPE_TIDEBOOKING = "TIDEBOOKING";
+        public const string TRAN_TYPE_TIDEWDL = "TIDEWDL";
+        public const string TRAN_TYPE_CHARITY = "CHARITY";
+        public const string TRAN_TYPE_MANCITY = "MANCITY";
+        public const string TRAN_TYPE_OPEN_CARD_NORM = "OPEN_CARD_NORM";
+        public const string TRAN_TYPE_CLOSE_CARD_NORM = "CLOSE_CARD_NORM";
+        public const string TRAN_TYPE_SET_PUR_LIMIT = "SET_PUR_LIMIT";
+        public const string TRAN_TYPE_SET_PUR_LIMIT_INTER = "SET_PUR_LIMIT_INTER";
+        public const string TRAN_TYPE_CLOSE_CARD_INTER = "CLOSE_CARD_INTER";
+        public const string TRAN_TYPE_OPEN_CARD_INTER = "OPEN_CARD_INTER";
+        public const string TRAN_TYPE_REG_EBANK_ONLINE = "REG_EBANK_ONLINE";
+        public const string TRAN_TYPE_SET_LIMIT_CREDIT_CARD = "SET_LIMIT_CREDIT_CARD";
+        //add new
+        public const string TRAN_TYPE_QR_PAYMENT = "QR_PAYMENT";
+
+
+        public const string EB_ACTION_CHANGE_PWD = "CHANGE_PWD";
+        public const string EB_ACTION_GET_ACTIVE_CODE = "GET_ACTIVE_CODE";
+        public const string EB_ACTION_ACTIVE_CONFIRM = "ACTIVE_CONFIRM";
+        public const string EB_ACTION_UPDATE_BENLIST = "INSERT_UPDATE_BENLIST";
+
+        public const string EB_ACTION_LOGIN = "LOGIN";
+
+        #endregion "TRAN_TYPE"
+
+
+        //CMD#GET_DES_NAME|CIF_NO#0310008705
+        public static String GET_DES_NAME = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+            + ROW_DLMT + "DES_ACCT" + COL_DLMT + "{DES_ACCT}"
+            + ROW_DLMT + "DES_NAME" + COL_DLMT + "{DES_NAME}"
+            ;
+
+
+        public static String GET_ACCT_BALANCE_LIST = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+            + ROW_DLMT + "RECORD" + COL_DLMT + "{RECORD}"
+            ;
+
+        public static String GET_CUR_VER = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "CUR_VER" + COL_DLMT + "{CUR_VER}"
+            ;
+
+
+        public static String BILL_PAY = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+            + ROW_DLMT + "TRANID" + COL_DLMT + "{TRANID}"
+            + ROW_DLMT + "TRAN_DATE" + COL_DLMT + "{TRAN_DATE}";
+
+
+        public static String TOPUP = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+            + ROW_DLMT + "TRANID" + COL_DLMT + "{TRANID}"
+            + ROW_DLMT + "TRAN_DATE" + COL_DLMT + "{TRAN_DATE}";
+
+
+
+        public static String FUNDTRANSFER_INTRA = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+            + ROW_DLMT + "TRANID" + COL_DLMT + "{TRANID}"
+              + ROW_DLMT + "TRAN_DATE" + COL_DLMT + "{TRAN_DATE}"
+            ;
+
+        public static String DOMESTIC_TRANSFER = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+            + ROW_DLMT + "TRANID" + COL_DLMT + "{TRANID}"
+            + ROW_DLMT + "TRAN_DATE" + COL_DLMT + "{TRAN_DATE}"
+            ;
+        
+        public static String TRANSFER_247 = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+        + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+        + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+        + ROW_DLMT + "TRANID" + COL_DLMT + "{TRANID}"
+        + ROW_DLMT + "TRAN_DATE" + COL_DLMT + "{TRAN_DATE}"
+            ;
+     
+        public static String CHANGE_PWD = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            ;
+
+        public static String CHECK_LOGIN = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+            + ROW_DLMT + "PKG_TYPE" + COL_DLMT + "{PKG_TYPE}"
+            + ROW_DLMT + "DEFAULT_ACCT" + COL_DLMT + "{DEFAULT_ACCT}"
+            + ROW_DLMT + "DEFAULT_LANG" + COL_DLMT + "{DEFAULT_LANG}"
+            + ROW_DLMT + "AVATAR" + COL_DLMT + "{AVATAR}" 
+            + ROW_DLMT + "CUST_NAME" + COL_DLMT + "{CUST_NAME}"
+            + ROW_DLMT + "REQ_PWD_CHANGE" + COL_DLMT + "{REQ_PWD_CHANGE}"
+             + ROW_DLMT + "AUTH_METHOD" + COL_DLMT + "{AUTH_METHOD}"
+            //anhnd2  05/01/2017 Them sdt tra ve.
+            + ROW_DLMT + "AUTH_INFO_EXT1" + COL_DLMT + "{AUTH_INFO_EXT1}"
+            + ROW_DLMT + "TOKEN" + COL_DLMT + "{TOKEN}"
+            + ROW_DLMT + "FP_TOKEN" + COL_DLMT + "{FP_TOKEN}"
+            ;
+
+
+        public static String ACTIVE_MOB = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "CUST_NAME" + COL_DLMT + "{CUST_NAME}"
+            + ROW_DLMT + "DEFAULT_ACCT" + COL_DLMT + "{DEFAULT_ACCT}"
+            + ROW_DLMT + "DEFAULT_LANG" + COL_DLMT + "{DEFAULT_LANG}"
+            + ROW_DLMT + "AVATAR" + COL_DLMT + "{AVATAR}" 
+            + ROW_DLMT + "AUTH_METHOD" + COL_DLMT + "{AUTH_METHOD}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            ;
+
+        public static String ACTIVE_MOB_CONFIRM = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+           + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+           + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+           + ROW_DLMT + "REQ_PWD_CHANGE" + COL_DLMT + "{REQ_PWD_CHANGE}"
+           + ROW_DLMT + "TOKEN" + COL_DLMT + "{TOKEN}"
+           ;
+
+        public static String GET_ACCT_LIST = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+            + ROW_DLMT + "RECORD" + COL_DLMT + "{RECORD}"
+            ;
+        public static String GET_ACCT_BALANCE_CASA = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+            + ROW_DLMT + "ACCTNO" + COL_DLMT + "{ACCTNO}"
+            + ROW_DLMT + "AVAIL_BALANCE" + COL_DLMT + "{AVAIL_BALANCE}"
+            + ROW_DLMT + "CURR_BALANCE" + COL_DLMT + "{CURR_BALANCE}";
+
+        public static String GET_ACCT_BALANCE_TIDE = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+            + ROW_DLMT + "ACCTNO" + COL_DLMT + "{ACCTNO}"
+            + ROW_DLMT + "BALANCE" + COL_DLMT + "{BALANCE}";
+
+        public static String GET_ACCT_BALANCE_LOAN = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+            + ROW_DLMT + "ACCTNO" + COL_DLMT + "{ACCTNO}"
+            + ROW_DLMT + "ORG_AMOUNT" + COL_DLMT + "{ORG_AMOUNT}"
+            + ROW_DLMT + "OUTSTANDING_AMOUNT" + COL_DLMT + "{OUTSTANDING_AMOUNT}";
+
+        //CMD#GET_ACCT_ENQUIRY|CIF_NO#0310008705|ACCTNO#1000013376|TYPE#001
+        public static String GET_ACCT_ENQUIRY = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+            + ROW_DLMT + "ACCTNO" + COL_DLMT + "{ACCTNO}"
+            + ROW_DLMT + "RECORD" + COL_DLMT + "{RECORD}";
+
+
+   
+        //CMD#GET_PRICE|CATID#PREPAID|PROVIDER_ID#VTEL|PARTNER#PAYNET
+        public static String GET_PRICE = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "RECORD" + COL_DLMT + "{RECORD}"
+            ;
+
+
+        public static String SET_FP = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+           + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+           + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+           + ROW_DLMT + "FP_TOKEN" + COL_DLMT + "{FP_TOKEN_VALUE}"
+           ;
+
+        public static String LOGOUT = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+          + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+          ;
+
+        //CMD#GET_CARD_LIST|CIF_NO#0310008705
+        //CHST0, CHST17 --> BINH THUONG
+        //CHST6, CHST7, CHST12  --> TAM KHOA
+        //KHAC  --> CHUA KICH HOAT
+        public static String GET_CARD_LIST = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+            + ROW_DLMT + "RECORD" + COL_DLMT + "{RECORD}";
+
+        //CMD#GET_CARD_INFO|CIF_NO#0310008705|CARD_NO
+        //CHST0, CHST17 --> BINH THUONG
+        //CHST6, CHST7, CHST12  --> TAM KHOA
+        //KHAC  --> CHUA KICH HOAT
+        public static String GET_CARD_INFO = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+            + ROW_DLMT + "CARD_NO" + COL_DLMT + "{CARD_NO}"
+            + ROW_DLMT + "HOLDER_NAME" + COL_DLMT + "{HOLDER_NAME}"
+            + ROW_DLMT + "CARD_TYPE" + COL_DLMT + "{CARD_TYPE}"
+            + ROW_DLMT + "ISSUE_DATE" + COL_DLMT + "{ISSUE_DATE}"
+            + ROW_DLMT + "ACCTNO" + COL_DLMT + "{ACCTNO}"
+            + ROW_DLMT + "STATUS" + COL_DLMT + "{STATUS}"
+            ;
+
+
+
+        //CMD#GET_FXRATE|CIF_NO#0310008705
+        public static String GET_FXRATE = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+            + ROW_DLMT + "RECORD" + COL_DLMT + "{RECORD}";
+
+
+        //CMD#BILL_ENQUIRY|CATEGORY_CODE#400000|PROVIDER_CODE#198000|PARTNER#VNPAY|BIIL_CODE#24242424
+        //string  retXML= myWS.SHB_OneBill_Query( txtCode.Text, Session["CategoryCode"].ToString() ,  Session["ProviderCode"].ToString());
+        public static String BILL_ENQUIRY = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "BILL_CODE" + COL_DLMT + "{BILL_CODE}"
+            + ROW_DLMT + "BILL_AMOUNT" + COL_DLMT + "{BILL_AMOUNT}"
+            + ROW_DLMT + "CHECK_AMOUNT" + COL_DLMT + "{CHECK_AMOUNT}"
+            ;
+
+        //CMD#GET_CARD_HOLDER_NAME_SMLGW|CARD_NO#9704XXXXXXXXXXXXXXX
+        //string  retXML= myWS.SHB_OneBill_Query( txtCode.Text, Session["CategoryCode"].ToString() ,  Session["ProviderCode"].ToString());
+        public static String GET_CARD_HOLDER_NAME_SMLGW = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "CARD_HOLDER_NAME" + COL_DLMT + "{CARD_HOLDER_NAME}";
+
+
+        public static String QR_PAYMENT = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+           + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+           + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+           + ROW_DLMT + "TRANID" + COL_DLMT + "{TRANID}"
+           + ROW_DLMT + "TRAN_DATE" + COL_DLMT + "{TRAN_DATE}";
+
+        #endregion "REPLY MESSAGE TEMPLATE"
+
+        #region "Database connection"
+
+        //******************************************  Database Connection Param
+        //******************************************  -------------------------	
+        public static String gMOBILConnstr = Funcs.getConn("MOBILDB_SMSUSER");//"User Id=smsuser;Data Source=MOBIL_TEST;Password=ebank;Min Pool Size=0;Max Pool Size=1000; Connection Lifetime=30;Connection Timeout=30;Incr Pool Size=3;Decr Pool Size=1;";
+        public static String gEBANKConnstr = Funcs.getConn("EBANKDB_EBANK");// "User Id=ebank;Data Source=ebank_test;Password=EBANK;Min Pool Size=0;Max Pool Size=1000; Connection Lifetime=30;Connection Timeout=30;Incr Pool Size=3;Decr Pool Size=1;Validate Connection=true;";
+        public static String gCARDCnnstr = Funcs.getConn("CARD_SVBODB_EBANK");//"User Id=EBANK;Data Source=UAT_SVBO;Password=EBANKSHB;Min Pool Size=0;Max Pool Size=1000; Connection Lifetime=30;Connection Timeout=30;Incr Pool Size=3;Decr Pool Size=1;";
+        public static String gINTELLECTConnstr = Funcs.getConn("INTELLECTDB_EBANK");//"User Id=ebank;Data Source=INTELLECT_TEST;Password=ebank;Min Pool Size=1;Max Pool Size=1000; Connection Lifetime=30;Connection Timeout=30;Incr Pool Size=3;Decr Pool Size=1;";
+
+        #endregion "Database connection"
+
+
+        #region "System param"
+
+        
+
+          public static string NULL_VALUE = "_NULL_";
+
+        //******************************************  System Param
+        //******************************************  -----------------
+        public static string SHB_BIN = "970443";
+        //anhnd2 PCI_DSS 26.01.2015
+        //Them CARDAPPSchema.
+        public static String gCARDAPPSchema = "ITCARDAPP.";
+        //
+        public static String gEBANKSchema = Funcs.getConfigVal("EBANK_RETAIL_SCHEMA"); // "EBANK_RETAIL.";
+
+        public static String gSMSUSERSchema = "SMSUSER.";
+
+        public static string defaultBR = "BR0001";
+
+        public static string gSMS_CENTER = "6089";
+        public static string gSMS_VN_PREFIX = "84";
+
+        /*KHONG DUNG CAC THONG TIN NAY
+        public static string gSMTP_SERVER_IP = "172.16.0.15";
+        public static string gSMTP_SERVER_PORT = "25";
+        public static string gSMTP_SERVER_SENDUSING = "2";
+        public static string gSMTP_SERVER_AUTHENTICATE = "1";
+        public static string gSMTP_SENDUSER = "SHBHO/ibanking";
+        public static string gSMTP_SENDPASSWORD = "123456";
+
+        public static string gSHB_FROM_EMAIL = "ibanking@shb.com.vn";
+        public static string gSHB_FEEDBACK_EMAIL = "thuy.ntn@shb.com.vn";
+        public static string gSHB_FEEDBACK_EMAIL_CC = "minh.ha1@shb.com.vn";
+        */
+
+        //------------------- INTERBANK FEE
+     
+        public static double interbank_feePercent = 0.01;
+        public static double interbank_minFee = 9000;
+        public static double interbank_maxFee = 100000;
+        public static string securityAcct_PRD = ",135,136,137,";
+        public static string runSchema = "EBANK.";
+        public const int waitTime = 300;
+        public const int LenOfCode = 6;
+        public const String SystemStatus_SysVarName = "EBANK_SYS_STS";
+        public const String AccessCount_SysVarName = "EBANK_ACCESS_CNT";
+        public const String AMOUNT_LIMIT_SYSVAR = "AMOUNT_LIMIT_SYSVAR";
+        public const String AMOUNT_LIMIT_SMS_SYSVAR = "AMOUNT_LIMIT_SMS_SYSVAR";
+
+
+        //han muc chuyen khoan 247 theo 1 giao dich la 50. trieu
+        public const double AMOUNT_LIMIT_247_PERTRAN = 50000000;
+
+        
+        public static string gINTEGRATOR_NVP_PATH = Funcs.getConfigVal("INTEGRATOR_NVP_PATH");
+        public static string gINTEGRATOR_SERVER_IP = Funcs.getConfigVal("INTEGRATOR_SERVER_IP");
+        public static string gINTEGRATOR_SERVER_PORT = Funcs.getConfigVal("INTEGRATOR_SERVER_PORT");
+        public static String gLogFile = Funcs.getConfigVal("LOG_FILE");
+        public static String gLogFile_IFACE = Funcs.getConfigVal("INTEGRATOR_LOG");
+
+        public const int TX_STATUS_START = 0;
+        public const int TX_STATUS_DONE = 1;
+        public const int TX_STATUS_FAIL = 2;
+        public const int TX_STATUS_WAIT = 3;
+
+        public const int INV_STATUS_START = 0;
+        public const int INV_STATUS_DONE = 1;
+        public const int INV_STATUS_CANCEL = 2;
+
+        //public const int INV_STATUS_WAIT = 3;
+
+        public const Double feeAmount_SC_VND = 0;
+        public const Double feeAmount_DC_VND = 0;
+        public const Double feeAmount_SC_OTHER = 0;
+        public const Double feeAmount_DC_OTHER = 0;
+
+
+        public const String txType_PREPAID = "PREPAID";
+        public const String txType_POSTPAID = "POSTPAID";
+        public const String txType_TOPUP = "TOPUP";
+        public const String txType_INTRA = "INTRA";
+        public const String txType_SELF = "SELF";
+        public const String txType_PAYMENT = "PAYMENT";
+        public const String txType_INTER = "INTER";
+        public const String txType_SI = "AS";
+        public const String txType_SW = "SW";
+        public const String txType_BATCH = "BATCH";
+
+        public const String txType_CARDOPEN = "OPEN";
+        public const String txType_CARDCLOSE = "CLOSE";
+
+
+        // DEFAULT kênh mobile banking dùng gói chuyển khoản
+
+        public const int AUTH_MODE_MOB_GOLD = 2;
+        #endregion "System param"
+
+        #region "Partner WS URL"
+        public static string URL_WS_VNPAY = Funcs.getConfigVal("URL_WS_VNPAY");
+        public static string URL_WS_ONEPAY_TOPUP = Funcs.getConfigVal("URL_WS_ONEPAY_TOPUP");
+        public static string URL_WS_NLUONG_TOPUP = Funcs.getConfigVal("URL_WS_NLUONG_TOPUP");
+
+        public static string URL_WS_NAPAS_VAS_TOPUP = Funcs.getConfigVal("URL_WS_NAPAS_VAS_TOPUP");
+
+        // NAPAS VAS TOPUP VA BILL là 2 service khác nhau
+        public static string URL_WS_NAPAS_VAS_BILL = Funcs.getConfigVal("URL_WS_NAPAS_VAS_BILL");
+
+        public static string URL_WS_NAPAS_247 = Funcs.getConfigVal("URL_WS_NAPAS_247");
+
+        public static string URL_WS_PAYOO = Funcs.getConfigVal("URL_WS_PAYOO");
+
+
+        public static string URL_WS_CARD_SHB = Funcs.getConfigVal("URL_WS_CARD_SHB");
+        
+
+
+
+        #endregion "Partner WS URL"
+
+        #region "Timeout config"
+        //TIMEOUT CORE BANKING
+
+        public const int TIMEOUT_WITH_CORE = 60000;
+
+        public const int TIMEOUT_WITH_VAS = 60000;
+
+        public const int TIMEOUT_WITH_VNPAY = 80000;
+
+        public const int TIMEOUT_WITH_ONEPAY = 60000;
+
+        public const int TIMEOUT_WITH_PAYOO = 120000;
+
+        public const int TIMEOUT_WITH_NLUONG = 60000;
+
+        public const int TIMEOUT_WITH_NAPAS_247 = 60000;
+
+        public const int TIMEOUT_WITH_CARD_SHB = 60000;
+
+        #endregion "Timeout config"
+
+
+        #region "Core banking Config"
+
+        public const int LIMIT_TOTAL_TIDE = 99;
+
+        public const String PROD_CD_TIDE_ONLINE = "470";
+
+        public static String HO_BR_CODE = "110000";
+
+        public const String prod_cd_CASA = "001";
+        public const String prod_cd_TIDE = "002";
+        public const String prod_cd_LENDING = "003";
+
+        public static String[] gResult_IBANKING_Arr = new String[]{
+																	"E00|Giao dịch thành công, xin cảm ơn quý khách.|Transaction sucessfully.",					//0
+																	"E99|Có lỗi trong quá trình giao dịch (đường truyền Internet có thể bị gián đoạn).|General error.",				//1
+																	"E01|Mã bảo vệ không chính xác. Quý khách vui lòng kiểm tra lại.|CAPTCHAR is invalid.",				//2
+																	"E02|Số tiền giao dịch không hợp lệ (số tiền nhỏ hơn 1 hoặc lớn hơn số dư tài khoản).|Invalid amount.",							//3
+																    "E03|Mật khẩu giao dịch không hợp lệ. Quý khách vui lòng kiểm tra lại.|Invalid transaction password.", //4
+																	"E04|Mã xác thực eSecure không hợp lệ. Quý khách vui lòng kiểm tra lại.|Invalid SMS code.",				//5
+																	"E05|Số lần giao dịch vượt quá giới hạn trong ngày.|Invalid txcount.",//6
+																	"E06|Số tiền giao dịch vượt quá giới hạn trong ngày.|Invalid amount.",//7
+																    "E07|Tài khoản không hợp lệ (tài khoản không tồn tại,không thuộc quyền sở hữu của quý khách hoặc tài khoản chuyển và nhận trùng nhau).|Invalid account."						//8
+																};
+
+        public static String ERR_CODE_TIMEOUT_WHEN_POST_TO_CORE = "-01";
+
+        //****************************************** Intellect Connection Param
+        //****************************************** --------------------------
+
+        public static String ChannelID = "MOB";
+
+        public static String EB_ACTION_DONE = "DONE";
+
+        public static String EB_ACTION_FAILED = "FAILED";
+
+
+        
+        public static String InterfaceID = "MOBBNK";
+        
+        
+        public static String refFormat = "MOB";
+        public static String refFormat_Book = "MOB";
+
+        public static String[] gResult_INTELLECT_Arr = new String[]{
+																	"00000|Giao dịch thành công. Xin chân thành cảm ơn quý khách.|Transaction successfull.",
+																	"99999|Có lỗi trong quá trình giao dịch (có thể đường truyền Internet bị gián đoạn).|General error.",
+																	"057|Số tài khoản không hợp lệ (tài khoản không tồn tại hoặc không thuộc quyền sở hữu của quý khách).|Invalid account number.",
+																	"002|Tài khoản của quý khách đã bị tạm treo.|Override - Account is Blocked.",
+																	"03|Tài khoản của quý khách đang ở trạng thái không cho phép ghi có.|Override - Account in No Credit Status.",
+																	"04|Tài khoản của quý khách đang ở trạng thái không cho phép ghi nợ.|Override - Account in No Debit Status.",
+																	"005|Tài khoản quý khách không đủ số dư để thực hiện giao dịch.|Override - Insufficent Fund.",
+																	"08|Ngày hiệu lực là ngày nghỉ. Quý khách vui lòng chọn ngày khác.|Override - Value Date is Holiday.",
+																	"11|Ngày hiệu lực không được nhỏ hơn ngày mở tài khoản. Quý khách vui lòng chọn ngày khác.|Override - Value Date is less than Account Open Date.",
+																	"12|Tài khoản đang ở trạng thái ngủ.|Override - Inactive Status.",
+																	"022|Tài khoản ghi có và tài khoản ghi nợ không thể trùng nhau.|Debit and Credit account no.can not be same.",
+																	"024|Số tài khoản không tồn tại. Quý khách vui lòng kiểm tra lại.|Account Number does Not exists.",
+																	"030|Số tiền phong không thể nhỏ hơn 1. Quý khách vui lòng thực hiện lại.|Ear Mark amount can not be lesser than 1.",
+																	"033|Tài khoản đang ở trạng thái ngủ.|Account is in Inactive Status - Dormant Account.",
+																	"RTE20007|Ngày thực hiện phải lớn hơn ngày hoạt động ngân hàng|Start date must greater then business date."
+																};
+        public static String BK = "12345a@";
+
+        #endregion "Core banking Config"
+
+        #region "Partner account"
+
+        public const String ACCT_SUSPEND_VNPAY_TOPUP = "1001010001";
+        public const String ACCT_SUSPEND_VNPAY_BILL = "1001010072";
+
+        public const String ACCT_SUSPEND_NLUONG = "1002416484";
+
+        public const String ACCT_SUSPEND_ONEPAY = "1001404549";
+
+
+        //PAYOO. LINHTN ADD NEW 21/09/2016
+        //PAYOO. LINHTN ADD NEW 05/10/2016
+        public const String ACCT_SUSPEND_PAYOO = "1005674346";
+
+
+        //NAPAS TOPUP BILLING
+
+
+        public static String ACCT_SUSPEND_VAS = "9230387044"; 
+        public static String ACCT_FEE_VAS = "9230387044";
+        public static String ACCT_VAT_VAS = "9230387044";
+
+
+        
+        //NASPAS CHUYEN TIEN QUA THE
+        public static String ACCT_SUSPEND_NAPAS_247_CARD = "9230097046";
+        public static String ACCT_FEE_NAPAS_247_CARD = "9231167043";
+        public static String ACCT_VAT_NAPAS_247_CARD = "9231167043";
+
+        //NASPAS CHUYEN TIEN QUA TAI KHOAN
+        public static String ACCT_SUSPEND_NAPAS_247ACCT = "9230097046";
+        public static String ACCT_FEE_NAPAS_247ACCT = "9231167043";
+        public static String ACCT_VAT_NAPAS_247ACCT = "9231167043";
+
+
+        #endregion "Partner account"
+
+        #region "Partner return code"
+
+        public static String[] RET_CODE_NAPAS_TOPUP = new String[]{
+                                                                 "00|Giao dịch thành công. Xin chân thành cảm ơn quý khách.|Transaction sucessfully",
+                                                                 "68|Giao dịch đang được xử lý|Transaction is processing",
+                                                                 "99|Giao dịch không thành công. Có lỗi trên đường truyền hoặc nhà cung cấp tạm ngưng dịch vụ.|Transaction failed",
+                                                                 "01|Không tìm thấy thông tin khách hàng.|Can't not find result.",
+                                                                 "08|Mã hóa đơn đã hết hạn|Bill code expire",
+                                                                 "13|Mệnh giá không hợp lệ|Invalid price",
+                                                                 "20|Mã hoá đơn không tồn tại|Bill code not exist",
+                                                                 "21|Mã hóa đơn đã được thanh toán|Bill code have been paid",
+                                                                 "40|Số điện thoại chưa được hỗ trợ|Not support this mobile",
+                                                                 "05|Giao dịch không thành công|Can not process",
+                                                                 "96|Lỗi hệ thống. Xin quý khách vui lòng thực hiện lại.|Error system. Please try again."
+                                                             };
+
+
+
+        public static String[] RET_CODE_VNPAY = new String[]{
+                                                                   "00|Giao dịch thành công. Xin chân thành cảm ơn quý khách|Transaction sucessfully",
+                                                                   "08|Giao dịch đang được xử lý|Transaction is processing",
+                                                                   "99|Có lỗi trong quá trình giao dich (có thể đường truyền Internet bị gián đoạn)|General error",
+                                                                   "12|Số điện thoại không hợp lệ.|Invalid mobile number",
+                                                                   "22|Số điện thoại không hợp lệ.|Invalid mobile number",
+                                                                   "89|Hóa đơn không cho thanh toán một phần|Invalid amount",
+                                                                   "50|Mã hóa đơn không hợp lệ|Invalid mobile number"
+                                                               };
+
+        public static String[] RET_CODE_QR_VNPAY = new String[]
+        {
+            "00|Giao dịch thành công. Xin chân thành cảm ơn quý khách|Transaction sucessfully",
+            "08|Giao dịch đang được xử lý|Transaction is processing",
+            "99|Có lỗi trong quá trình giao dich (có thể đường truyền Internet bị gián đoạn)|General error",
+            "27|Hết toàn bộ hàng|Out of stock in order"
+        };
+
+        public static String[] RET_CODE_ONEPAY = new String[]{
+                                                                    "000000|Giao dịch thành công. Xin chân thành cảm ơn quý khách.|Transaction sucessfully",
+                                                                    "08|Giao dịch đang được xử lý|Transaction is processing",
+                                                                    "100007|Có lỗi trên đường truyền hoặc nhà cung cấp tạm ngưng dịch vụ.|Invalid mobile number",
+                                                                    "100003|Hóa đơn không cho phép thanh toán một phần hoặc số tiền thanh toán lớn hơn số tiền hóa đơn|Invalid amout",
+                                                                    "100990|Loi duong truyen.|Invalid mobile number"
+                                                                };
+
+        public static String[] RET_CODE_NLUONG = new String[]{
+                                                                    "E00|Giao dịch thành công. Xin chân thành cảm ơn quý khách.|Transaction sucessfully.",
+                                                                    "08|Giao dịch đang được xử lý|Transaction is processing",
+                                                                    "E99|Có lỗi trong quá trình giao dich (có thể đường truyền Internet bị gián đoạn).|General error.",
+                                                                    "E98|Sai mat khau goi WS.|Invalid username and password for WS.",
+                                                                    "E01|Số tiền nạp không hợp lệ.|Invalid topup amount",
+                                                                    "E02|Email/tài khoản không tồn tại.|Invalid topup email",
+                                                                };
+
+
+        public static String[] RET_CODE_PAYOO = new String[]{
+                                                                    
+																   "0|Giao dịch thành công. Xin chân thành cảm ơn quý khách|Transaction sucessfully",
+                                                                   "68|Giao dịch đang được xử lý|Transaction is processing",
+                                                                   "99|Có lỗi trong quá trình giao dich (có thể đường truyền Internet bị gián đoạn)|General error",
+																   "-1|Có lỗi trong quá trình giao dịch (có thể đường truyền Internet bị gián đoạn)|General error"
+                                                                };
+
+        #endregion "Partner return code"
+
+        #region  "Config Partner ID"
+
+        public static String PARTNER_ID_NLUONG = "NLUONG";
+        public static String PARTNER_ID_VNPAY = "VNPAY";
+        public static String PARTNER_ID_VAS = "VAS"; //SML TOUP BILLING
+        public static String PARTNER_ID_ONEPAY = "ONEPAY"; //ONEPAY POSTPAID
+
+        public static String PARTNER_ID_PAYOO = "PAYOO"; //ONEPAY POSTPAID
+
+
+
+        #endregion "Config Parner ID"
+
+        #region "Config for VNPAY"
+        public static string gGateway_VNPAY_URL = Funcs.getConfigVal("URL_WS_VNPAY");
+        public static String[] gPrice_Arr = new String[] { "10000", "20000", "30000", "50000", "100000", "200000", "300000", "500000" };//0
+        public static String[] gPrice_Arr_SML = new String[] { "30,000", "50,000", "100,000", "200,000", "300,000", "500,000" };//0
+        public static String gVNPAY_ARR_GETPRICE = "000003|000000000000|[LOCAL_DATE]|000000|[SEND_TIME]|[SEND_DATE]|6014|970443|     SHB|[PROVIDER_CODE]|          ";
+
+        public static String gVNPAY_ARR_0220_000000 = "000000|[AMOUNT]|[LOCAL_DATE]|[TRACE_ID]|[SEND_TIME]|[SEND_DATE]|6014|970443|     SHB|[EXT_DATA]|[ACCTNO]";
+
+        public static String gVNPAY_ARR_0220_000001 = "000001|[AMOUNT]|[LOCAL_DATE]|[TRACE_ID]|[SEND_TIME]|[SEND_DATE]|6014|970443|     SHB|[EXT_DATA]|0000000000";
+
+        public static String gVNPAY_ARR_0220_000002 = "000002|000000000000|[LOCAL_DATE]|000000|[SEND_TIME]|[SEND_DATE]|6014|970443|     SHB|[EXT_DATA]|0000000000";
+
+        public static String gVNPAY_BITMAP_0220_000003 = "3,4,7,11,12,13,18,32,41,48,102";
+        public static String gVNPAY_BITMAP_0220_000000 = "3,4,7,11,12,13,18,32,41,48,102";
+        public static String gVNPAY_BITMAP_0220_000001 = "3,4,7,11,12,13,18,32,41,48,102";
+        public static String gVNPAY_BITMAP_0220_000002 = "3,4,7,11,12,13,18,32,41,48,102";
+        public static String gVNPAY_TRAN_CAT_0220 = "0220";
+        public static String gVNPAY_TRAN_TYPE_000003 = "000003";
+        public static String gVNPAY_TRAN_TYPE_000000 = "000000";
+        public static String gVNPAY_TRAN_TYPE_000001 = "000001";
+        public static String gVNPAY_TRAN_TYPE_000002 = "000002";
+
+        public static String gSHB_CHANNEL_NET = "6014";
+        public static String gSHB_BIN = "970443";
+
+        public static String gVNPAY_SHB_USER = "SHB";
+        public static String gVNPAY_SHB_PASSWORD = "SHB";
+
+
+
+
+        #endregion "Config for VNPAY"
+
+        #region "Config for ONEPAY"
+        // TEST ONEPAY		
+        public static String payment_ONEPAY_Partner = "ONEPAY";
+
+
+
+
+        // THONG TIN TAI KHOAN ONEPAY
+        // CIF_NO: 0100635883
+        // ACCT: 1001404549
+
+        public static string BANK_KEY = "A2C75E5C3A4C0E23D01871A7DB5B7C8F"; // BANK_KEY: ONEPAY - SHB
+
+        #endregion "Config for ONEPAY"
+
+
+        #region "Config for NAPAS VAS TOPUP BILLING"
+
+        public static Double SMLBILL_FEE_AMT = 0;
+        public static Double SMLBILL_VAT_AMT = 0;
+
+
+
+        #endregion "Config for NAPAS VAS TOPUP BILLING"
+
+        #region "Config for NLUONG"
+
+        public static String payment_NLUONG_gwUsername = "shb@shb";
+        public static String payment_NLUONG_gwPassword = "shb@shb";
+
+
+        #endregion "Config for NLUONG"
+
+        public static string gGateway_SLMGW_URL = Funcs.getConfigVal("URL_WS_NAPAS_247");
+        #region "Config for NAPAS 247 TO CARD"
+
+        public static Double SML_FEE_AMT = 9000;
+        public static Double SML_VAT_AMT = 900;
+
+
+        public static Double SML_LIMIT_PER_TRAN = 50000000;
+
+        //public static String[] gResult_SML_Arr = new String[]{
+								//								 "00|Giao dịch thành công. Xin chân thành cảm ơn quý khách.|Transaction sucessfully",																	
+								//								 "99|Giao dịch không thành công. Có lỗi trên đường truyền hoặc nhà cung cấp tạm ngưng dịch vụ.|Transaction failed",
+								//								 "08|Giao dịch đang được xử lý tại ngân hàng thụ hưởng, quý khách vui lòng kiểm tra với người nhận.|Transaction failed",
+								//								 "14|Số thẻ đích không đúng|Invalid acctno",											
+								//								 "41|Thẻ đích không hợp lệ|Invalid card",										
+								//								 "54|Thẻ đích hết hạn sử dụng|Card expire",												
+								//								 "61|Số tiền chuyển khoản vượt quá hạn mức một giao dịch|Violate limit amount",	
+			     //                                                "91|Giao dịch không thành công. Xin quý khách vui lòng thực hiện lại.|Transaction failed",																								 
+								//								 //"91|Ngân hàng thụ hưởng không có trong danh sách|Bank ben not in accepted list",												
+								//								 "01|Thông tin thẻ đích/tài khoản không hợp lệ|Invalid account",																												 
+								//								 "68|Truy vấn thông tin thẻ đích không thành công|Invalid account",
+								//								 //"05|Giao dịch không thành công. Xin quý khách vui lòng thực hiện lại.|Transaction failed",																								 	
+								//								 "91|Giao dịch không thành công. Xin quý khách vui lòng thực hiện lại.|Transaction failed"																								 	
+								//							 };
+
+        public static String[] gResult_SML_Arr = new String[]{
+                                                                 "00|Giao dịch thành công. Xin chân thành cảm ơn quý khách.|Transaction sucessfully",
+                                                                 "99|Giao dịch không thành công. Có lỗi trên đường truyền hoặc nhà cung cấp tạm ngưng dịch vụ.|Transaction failed",
+                                                                 "68|Giao dịch đang được xử lý tại ngân hàng thụ hưởng, quý khách vui lòng kiểm tra với người nhận.|Transaction failed",
+                                                                 "14|Số thẻ đích không đúng|Invalid acctno",
+                                                                 "41|Thẻ đích không hợp lệ|Invalid card",
+                                                                 "54|Thẻ đích hết hạn sử dụng|Card expire",
+                                                                 "61|Số tiền chuyển khoản vượt quá hạn mức một giao dịch|Violate limit amount",
+                                                                 "91|Giao dịch không thành công. Xin quý khách vui lòng thực hiện lại.|Transaction failed",																								 
+																 //"91|Ngân hàng thụ hưởng không có trong danh sách|Bank ben not in accepted list",												
+																 "01|Thông tin thẻ đích/tài khoản không hợp lệ|Invalid account",
+																 "05|Giao dịch không thành công. Xin quý khách vui lòng thực hiện lại.|Transaction failed",	
+                                                                 "96|Giao dịch không thành công. Xin quý khách vui lòng thực hiện lại.|Transaction failed"
+                                                             };
+        #endregion "Config for NAPAS 247 TO CARD"
+
+
+
+
+        //18/05/2015 CK nhannh qua tai khoan SML
+        #region "Config for NAPAS 247 TO ACCT"
+
+
+        //anhnd2 thêm. 
+        public static string gGateway_SLMGW_ACCT_URL = Funcs.getConfigVal("SMLGWIBTACC.SMLWSGW");
+
+        public static Double SML_ACCT_FEE_AMT = 9000;
+        public static Double SML_ACCT_VAT_AMT = 900;
+        public static Double SML_ACCT_LIMIT_PER_TRAN = 50000000;
+
+
+        //CMD#GET_SML_TRANSFER_BANK_LIST|CIF_NO#  
+        public static string GET_SML_TRANSFER_BANK_LIST = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "RECORD" + COL_DLMT + "{RECORD}";
+
+        //CMD#GET_ACCOUNT_INFO_SMLGW|BANK_CODE#658568|ACCT_DES#23443543434
+        public static String GET_ACCOUNT_INFO_SMLGW = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "ACCOUNT_OWNER_NAME" + COL_DLMT + "{ACCOUNT_OWNER_NAME}";
+
+        //CMD#GET_SML_ACCT_BEN|CIF_NO#0310003896
+        public static String GET_SML_ACCT_BEN = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "RECORD" + COL_DLMT + "{RECORD}";
+        //CMD#FUNDTRANSFER_SML_ACCT_FULL|ACTIVE_CODE#ABC|CIF_NO#0310008705|SRC_ACCT#1000013376|BANK_DES#BANK1"|DES_ACCT#1000010000|AMOUNT#1000|TXDESC#CK SML TEST|TRANPWD#fksdfjf385738jsdfjsdf9";
+        public static String FUNDTRANSFER_SML_ACCT_FULL = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+        + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+        + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+        + ROW_DLMT + "TRANID" + COL_DLMT + "{TRANID}";
+
+        //public static String[] gResult_SML_Acct_Arr = new String[]{
+								//								 "00|Giao dịch thành công. Xin chân thành cảm ơn quý khách.|Transaction sucessfully",																	
+								//								 "99|Giao dịch không thành công. Có lỗi trên đường truyền hoặc nhà cung cấp tạm ngưng dịch vụ.|Transaction failed",
+								//								 "08|Giao dịch đang được xử lý tại ngân hàng thụ hưởng, quý khách vui lòng kiểm tra với người nhận.|Transaction failed",
+								//								 "14|Số tài khoản đích không đúng|Invalid acctno",											
+								//								 "41|Tài khoản đích không hợp lệ|Invalid card",										
+								//								 "54|Tài khoản đích hết hạn sử dụng|Card expire",												
+								//								 "61|Số tiền chuyển khoản vượt quá hạn mức một giao dịch|Violate limit amount",	
+			     //                                                "91|Giao dịch không thành công. Xin quý khách vui lòng thực hiện lại.|Transaction failed",																								 
+								//								 //"91|Ngân hàng thụ hưởng không có trong danh sách|Bank ben not in accepted list",												
+								//								 "01|Thông tin tài khoản đích không hợp lệ|Invalid account",																												 
+								//								 "68|Truy vấn thông tin tài khoản đích không thành công|Invalid account",
+								//								 //"05|Giao dịch không thành công. Xin quý khách vui lòng thực hiện lại.|Transaction failed",																								 	
+								//								 "91|Giao dịch không thành công. Xin quý khách vui lòng thực hiện lại.|Transaction failed"																								 	
+								//							 };
+
+        public static String[] gResult_SML_Acct_Arr = new String[]{
+                                                                 "00|Giao dịch thành công. Xin chân thành cảm ơn quý khách.|Transaction sucessfully",
+                                                                 "99|Giao dịch không thành công. Có lỗi trên đường truyền hoặc nhà cung cấp tạm ngưng dịch vụ.|Transaction failed",
+                                                                 "68|Giao dịch đang được xử lý tại ngân hàng thụ hưởng, quý khách vui lòng kiểm tra với người nhận.|Transaction failed",
+                                                                 "14|Số tài khoản đích không đúng|Invalid acctno",
+                                                                 "41|Tài khoản đích không hợp lệ|Invalid card",
+                                                                 "54|Tài khoản đích hết hạn sử dụng|Card expire",
+                                                                 "61|Số tiền chuyển khoản vượt quá hạn mức một giao dịch|Violate limit amount",
+                                                                 "91|Giao dịch không thành công. Xin quý khách vui lòng thực hiện lại.|Transaction failed",																								 
+																 //"91|Ngân hàng thụ hưởng không có trong danh sách|Bank ben not in accepted list",												
+																 "01|Thông tin tài khoản đích không hợp lệ|Invalid account",
+                                                                 "05|Giao dịch không thành công. Xin quý khách vui lòng thực hiện lại.|Transaction failed",
+                                                                 "96|Giao dịch không thành công. Xin quý khách vui lòng thực hiện lại.|Transaction failed"
+                                                             };
+
+        #endregion "Config for NAPAS 247 TO ACCT"
+
+
+
+        #region CREDIT CARD TRANSFER
+        // creadit card transfer        
+        public static string key_credit_card_gw = "186a6b3ba32c1168bbd953bc14e4f4c2";
+        public static string gGateway_CREDIT_CARD_GW_URL = Funcs.getConfigVal("SHBCardGW.Service");
+        //public const string CREADIT_CARD_GL_SUSPEND = "9180297048";
+        public const string CREDIT_CARD_GL_SUSPEND = "9230617044";
+        public const string txType_CREADIT = "CREDIT";
+
+        public static String CREDIT_CARD_PAYMENT = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+               + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+               + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+               + ROW_DLMT + "TRANID" + COL_DLMT + "{TRANID}"
+                + ROW_DLMT + "TRAN_DATE" + COL_DLMT + "{TRAN_DATE}"
+               ;
+        public static String GET_CARD_NAME_BY_ACCTNO = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+                 + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+                 + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+                  + ROW_DLMT + "CARD_NAME" + COL_DLMT + "{CARD_NAME}"
+                 ;
+
+        public static String GET_LIMIT_CREDIT_CARD = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+            + ROW_DLMT + "CARD_NO" + COL_DLMT + "{CARD_NO}"
+           + ROW_DLMT + "CARD_NO" + COL_DLMT + "{CARD_NO}"
+            + ROW_DLMT + "ECOMMERCE_LIMIT" + COL_DLMT + "{ECOMMERCE_LIMIT}"
+            + ROW_DLMT + "ECOMMERCE_MAX" + COL_DLMT + "{ECOMMERCE_MAX}"
+            + ROW_DLMT + "ECOMMERCE_TYPE" + COL_DLMT + "{ECOMMERCE_TYPE}"
+            + ROW_DLMT + "PURCHASE_DAILY_LIMIT" + COL_DLMT + "{PURCHASE_DAILY_LIMIT}"
+            + ROW_DLMT + "PURCHASE_DAILY_MAX" + COL_DLMT + "{PURCHASE_DAILY_MAX}"
+            + ROW_DLMT + "PURCHASE_DAILY_TYPE" + COL_DLMT + "{PURCHASE_DAILY_TYPE}"
+            + ROW_DLMT + "CASH_DAILY_LIMIT" + COL_DLMT + "{CASH_DAILY_LIMIT}"
+            + ROW_DLMT + "CASH_DAILY_MAX" + COL_DLMT + "{CASH_DAILY_MAX}"
+            + ROW_DLMT + "CASH_DAILY_TYPE" + COL_DLMT + "{CASH_DAILY_TYPE}"
+            + ROW_DLMT + "PURCHASE_MONTHLY_LIMIT" + COL_DLMT + "{PURCHASE_MONTHLY_LIMIT}"
+            + ROW_DLMT + "PURCHASE_MONTHLY_MAX" + COL_DLMT + "{PURCHASE_MONTHLY_MAX}"
+            + ROW_DLMT + "PURCHASE_MONTHLY_TYPE" + COL_DLMT + "{PURCHASE_MONTHLY_TYPE}";
+
+
+
+
+        public static String SET_LIMIT_CREDIT_CARD = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "TRANID" + COL_DLMT + "{TRANID}"
+            + ROW_DLMT + "TRAN_DATE" + COL_DLMT + "{TRAN_DATE}";
+
+
+        public static string GET_LIST_CREDIT_CARD = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+            + ROW_DLMT + "RECORD" + COL_DLMT + "{RECORD}";
+
+
+        public static string GET_CREDIT_CARD_INFO = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "CARD_HOLDER_NAME" + COL_DLMT + "{CARD_HOLDER_NAME}"
+            + ROW_DLMT + "STATUS" + COL_DLMT + "{STATUS}"
+            + ROW_DLMT + "TYPE" + COL_DLMT + "{TYPE}"
+            + ROW_DLMT + "MAD" + COL_DLMT + "{MAD}"
+            + ROW_DLMT + "AMOUNT" + COL_DLMT + "{Amount}";
+
+
+        public static string GET_CREDIT_CARD_ACCT_INFO = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "CARD_HOLDER_NAME" + COL_DLMT + "{CARD_HOLDER_NAME}"
+            + ROW_DLMT + "STATUS" + COL_DLMT + "{STATUS}"
+            + ROW_DLMT + "TYPE" + COL_DLMT + "{TYPE}"
+            + ROW_DLMT + "MAD" + COL_DLMT + "{MAD}"
+            + ROW_DLMT + "AMOUNT" + COL_DLMT + "{Amount}";
+
+        public static String HANDLE_CARD = "ERR_CODE" + COL_DLMT + "{ERR_CODE}"
+            + ROW_DLMT + "ERR_DESC" + COL_DLMT + "{ERR_DESC}"
+            + ROW_DLMT + "CIF_NO" + COL_DLMT + "{CIF_NO}"
+            ;
+
+        #endregion
+
+        public const String Delimiter = "|";
+        public const String cbNoData_text = "--Không có--";
+        public const String en_cbNoData_text = "--No data--";
+        public static String gService = "SHB MOBILEBANKING\r\n";
+        public static String gSMSCodeMsg = gService + "MA XAC THUC SMS CUA GIAO DICH SO [TRANO] LA [SMSCODE]. QUY KHACH HAY DIEN VAO DTDD DE HOAN TAT GIAO DICH TRONG VONG " + waitTime.ToString() + " GIAY.";
+        public static String gSMSCodeMsg_Prepaid = gService + "THE NAP TIEN [PROVIDER] [PRICE]:\r\nMA SO NAP TIEN:[CODE]\r\nNGAY HET HAN:[EXPDATE]\r\nSERIAL:[SERIAL]\r\nXIN CAM ON QUY KHACH!";
+        public static String gSMSCodeMsg_Prepaid_Extra = gService + "THE NAP TIEN [PROVIDER] [PRICE]:\r\nMA SO:[CODE]\r\nHET HAN:[EXPDATE]\r\nSERIAL:[SERIAL]\r\nACCOUNT:[ACCOUNT]\r\nPASSWORD:[PASSWORD]\r\nPERIOD:[PERIOD]";
+
+
+        /// 03Jul2016
+        ///anhnd2
+        ///template SMS gui active code.
+        ///MA KICH HOAT DỊCH VỤ SHB MOBILE LA843324. QUY KHACH HAY NHẠP VAO UNG DUNG DE HOAN TAT. HOTLINE HO TRO 1800588856.
+        ///
+        //public const String gSMSCodeMsg_Active = "[ACTIVE_CODE] LA MA KICH HOAT CUA QUY KHACH";
+        public const String gSMSCodeMsg_Active = "MA KICH HOAT DICH VU SHB MOBILE LA [ACTIVE_CODE]. QUY KHACH HAY NHAP VAO UNG DUNG DE HOAN TAT. HOTLINE HO TRO 1800588856";
+
+        public class PayooConfig
+        {
+            public static string ServiceId = "DIEN";
+            public static string ProviderId = "EVNHN";
+            public static string UserId = "DEMO";
+            public static string AgentId = "367";
+        }
+
+        public Config()
+        {
+            //
+            // TODO: Add constructor logic here
+            //
+        }
+
+    }
+}
+
+

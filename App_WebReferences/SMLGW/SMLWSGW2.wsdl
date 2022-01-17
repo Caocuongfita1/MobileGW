@@ -1,0 +1,670 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="execute">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="input" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="executeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="executeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SHB_Query">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Primary_Account_Number" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Processing_Code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Transaction_Amount" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Audit_Number" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Merchant_Type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Acquiring_Code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Term_ID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Card_Acceptor_Name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Destination_Number" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Narration" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SHB_QueryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SHB_QueryResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SHB_Tranfer_To_Card">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Primary_Account_Number" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Processing_Code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Transaction_Amount" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Audit_Number" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Merchant_Type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Acquiring_Code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Term_ID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Card_Acceptor" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Destination_Number" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Narration" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SHB_Tranfer_To_CardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SHB_Tranfer_To_CardResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SHB_Query_Acct">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Source_Acct" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Processing_Code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Transaction_Amount" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Audit_Number" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Merchant_Type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Acquiring_Code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Term_ID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Card_Acceptor_Name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dest_Acct" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Narration" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Ben_ID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SHB_Query_AcctResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SHB_Query_AcctResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SHB_Tranfer_To_Acct">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Source_Acct" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Processing_Code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Transaction_Amount" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Audit_Number" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Merchant_Type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Acquiring_Code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Term_ID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Card_Acceptor_Name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dest_Acct" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Narration" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Ben_ID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SHB_Tranfer_To_AcctResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SHB_Tranfer_To_AcctResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SML_Tranfer_To_Acct">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Primary_Account_Number" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Processing_Code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Transaction_Amount" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Transmission_Date_Time" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Audit_Number" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Merchant_Type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Acquiring_Code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Term_ID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Card_Acceptor_Name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Destination_Number" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Narration" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Ben_ID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MAC" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SML_Tranfer_To_AcctResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SML_Tranfer_To_AcctResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="executeSoapIn">
+    <wsdl:part name="parameters" element="tns:execute" />
+  </wsdl:message>
+  <wsdl:message name="executeSoapOut">
+    <wsdl:part name="parameters" element="tns:executeResponse" />
+  </wsdl:message>
+  <wsdl:message name="SHB_QuerySoapIn">
+    <wsdl:part name="parameters" element="tns:SHB_Query" />
+  </wsdl:message>
+  <wsdl:message name="SHB_QuerySoapOut">
+    <wsdl:part name="parameters" element="tns:SHB_QueryResponse" />
+  </wsdl:message>
+  <wsdl:message name="SHB_Tranfer_To_CardSoapIn">
+    <wsdl:part name="parameters" element="tns:SHB_Tranfer_To_Card" />
+  </wsdl:message>
+  <wsdl:message name="SHB_Tranfer_To_CardSoapOut">
+    <wsdl:part name="parameters" element="tns:SHB_Tranfer_To_CardResponse" />
+  </wsdl:message>
+  <wsdl:message name="SHB_Query_AcctSoapIn">
+    <wsdl:part name="parameters" element="tns:SHB_Query_Acct" />
+  </wsdl:message>
+  <wsdl:message name="SHB_Query_AcctSoapOut">
+    <wsdl:part name="parameters" element="tns:SHB_Query_AcctResponse" />
+  </wsdl:message>
+  <wsdl:message name="SHB_Tranfer_To_AcctSoapIn">
+    <wsdl:part name="parameters" element="tns:SHB_Tranfer_To_Acct" />
+  </wsdl:message>
+  <wsdl:message name="SHB_Tranfer_To_AcctSoapOut">
+    <wsdl:part name="parameters" element="tns:SHB_Tranfer_To_AcctResponse" />
+  </wsdl:message>
+  <wsdl:message name="SML_Tranfer_To_AcctSoapIn">
+    <wsdl:part name="parameters" element="tns:SML_Tranfer_To_Acct" />
+  </wsdl:message>
+  <wsdl:message name="SML_Tranfer_To_AcctSoapOut">
+    <wsdl:part name="parameters" element="tns:SML_Tranfer_To_AcctResponse" />
+  </wsdl:message>
+  <wsdl:message name="executeHttpGetIn">
+    <wsdl:part name="input" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="executeHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SHB_QueryHttpGetIn">
+    <wsdl:part name="Primary_Account_Number" type="s:string" />
+    <wsdl:part name="Processing_Code" type="s:string" />
+    <wsdl:part name="Transaction_Amount" type="s:string" />
+    <wsdl:part name="Audit_Number" type="s:string" />
+    <wsdl:part name="Merchant_Type" type="s:string" />
+    <wsdl:part name="Acquiring_Code" type="s:string" />
+    <wsdl:part name="Term_ID" type="s:string" />
+    <wsdl:part name="Card_Acceptor_Name" type="s:string" />
+    <wsdl:part name="Destination_Number" type="s:string" />
+    <wsdl:part name="Narration" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SHB_QueryHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SHB_Tranfer_To_CardHttpGetIn">
+    <wsdl:part name="Primary_Account_Number" type="s:string" />
+    <wsdl:part name="Processing_Code" type="s:string" />
+    <wsdl:part name="Transaction_Amount" type="s:string" />
+    <wsdl:part name="Audit_Number" type="s:string" />
+    <wsdl:part name="Merchant_Type" type="s:string" />
+    <wsdl:part name="Acquiring_Code" type="s:string" />
+    <wsdl:part name="Term_ID" type="s:string" />
+    <wsdl:part name="Card_Acceptor" type="s:string" />
+    <wsdl:part name="Destination_Number" type="s:string" />
+    <wsdl:part name="Narration" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SHB_Tranfer_To_CardHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SHB_Query_AcctHttpGetIn">
+    <wsdl:part name="Source_Acct" type="s:string" />
+    <wsdl:part name="Processing_Code" type="s:string" />
+    <wsdl:part name="Transaction_Amount" type="s:string" />
+    <wsdl:part name="Audit_Number" type="s:string" />
+    <wsdl:part name="Merchant_Type" type="s:string" />
+    <wsdl:part name="Acquiring_Code" type="s:string" />
+    <wsdl:part name="Term_ID" type="s:string" />
+    <wsdl:part name="Card_Acceptor_Name" type="s:string" />
+    <wsdl:part name="Dest_Acct" type="s:string" />
+    <wsdl:part name="Narration" type="s:string" />
+    <wsdl:part name="Ben_ID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SHB_Query_AcctHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SHB_Tranfer_To_AcctHttpGetIn">
+    <wsdl:part name="Source_Acct" type="s:string" />
+    <wsdl:part name="Processing_Code" type="s:string" />
+    <wsdl:part name="Transaction_Amount" type="s:string" />
+    <wsdl:part name="Audit_Number" type="s:string" />
+    <wsdl:part name="Merchant_Type" type="s:string" />
+    <wsdl:part name="Acquiring_Code" type="s:string" />
+    <wsdl:part name="Term_ID" type="s:string" />
+    <wsdl:part name="Card_Acceptor_Name" type="s:string" />
+    <wsdl:part name="Dest_Acct" type="s:string" />
+    <wsdl:part name="Narration" type="s:string" />
+    <wsdl:part name="Ben_ID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SHB_Tranfer_To_AcctHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SML_Tranfer_To_AcctHttpGetIn">
+    <wsdl:part name="Primary_Account_Number" type="s:string" />
+    <wsdl:part name="Processing_Code" type="s:string" />
+    <wsdl:part name="Transaction_Amount" type="s:string" />
+    <wsdl:part name="Transmission_Date_Time" type="s:string" />
+    <wsdl:part name="Audit_Number" type="s:string" />
+    <wsdl:part name="Merchant_Type" type="s:string" />
+    <wsdl:part name="Acquiring_Code" type="s:string" />
+    <wsdl:part name="Term_ID" type="s:string" />
+    <wsdl:part name="Card_Acceptor_Name" type="s:string" />
+    <wsdl:part name="Destination_Number" type="s:string" />
+    <wsdl:part name="Narration" type="s:string" />
+    <wsdl:part name="Ben_ID" type="s:string" />
+    <wsdl:part name="MAC" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SML_Tranfer_To_AcctHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="executeHttpPostIn">
+    <wsdl:part name="input" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="executeHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SHB_QueryHttpPostIn">
+    <wsdl:part name="Primary_Account_Number" type="s:string" />
+    <wsdl:part name="Processing_Code" type="s:string" />
+    <wsdl:part name="Transaction_Amount" type="s:string" />
+    <wsdl:part name="Audit_Number" type="s:string" />
+    <wsdl:part name="Merchant_Type" type="s:string" />
+    <wsdl:part name="Acquiring_Code" type="s:string" />
+    <wsdl:part name="Term_ID" type="s:string" />
+    <wsdl:part name="Card_Acceptor_Name" type="s:string" />
+    <wsdl:part name="Destination_Number" type="s:string" />
+    <wsdl:part name="Narration" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SHB_QueryHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SHB_Tranfer_To_CardHttpPostIn">
+    <wsdl:part name="Primary_Account_Number" type="s:string" />
+    <wsdl:part name="Processing_Code" type="s:string" />
+    <wsdl:part name="Transaction_Amount" type="s:string" />
+    <wsdl:part name="Audit_Number" type="s:string" />
+    <wsdl:part name="Merchant_Type" type="s:string" />
+    <wsdl:part name="Acquiring_Code" type="s:string" />
+    <wsdl:part name="Term_ID" type="s:string" />
+    <wsdl:part name="Card_Acceptor" type="s:string" />
+    <wsdl:part name="Destination_Number" type="s:string" />
+    <wsdl:part name="Narration" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SHB_Tranfer_To_CardHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SHB_Query_AcctHttpPostIn">
+    <wsdl:part name="Source_Acct" type="s:string" />
+    <wsdl:part name="Processing_Code" type="s:string" />
+    <wsdl:part name="Transaction_Amount" type="s:string" />
+    <wsdl:part name="Audit_Number" type="s:string" />
+    <wsdl:part name="Merchant_Type" type="s:string" />
+    <wsdl:part name="Acquiring_Code" type="s:string" />
+    <wsdl:part name="Term_ID" type="s:string" />
+    <wsdl:part name="Card_Acceptor_Name" type="s:string" />
+    <wsdl:part name="Dest_Acct" type="s:string" />
+    <wsdl:part name="Narration" type="s:string" />
+    <wsdl:part name="Ben_ID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SHB_Query_AcctHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SHB_Tranfer_To_AcctHttpPostIn">
+    <wsdl:part name="Source_Acct" type="s:string" />
+    <wsdl:part name="Processing_Code" type="s:string" />
+    <wsdl:part name="Transaction_Amount" type="s:string" />
+    <wsdl:part name="Audit_Number" type="s:string" />
+    <wsdl:part name="Merchant_Type" type="s:string" />
+    <wsdl:part name="Acquiring_Code" type="s:string" />
+    <wsdl:part name="Term_ID" type="s:string" />
+    <wsdl:part name="Card_Acceptor_Name" type="s:string" />
+    <wsdl:part name="Dest_Acct" type="s:string" />
+    <wsdl:part name="Narration" type="s:string" />
+    <wsdl:part name="Ben_ID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SHB_Tranfer_To_AcctHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SML_Tranfer_To_AcctHttpPostIn">
+    <wsdl:part name="Primary_Account_Number" type="s:string" />
+    <wsdl:part name="Processing_Code" type="s:string" />
+    <wsdl:part name="Transaction_Amount" type="s:string" />
+    <wsdl:part name="Transmission_Date_Time" type="s:string" />
+    <wsdl:part name="Audit_Number" type="s:string" />
+    <wsdl:part name="Merchant_Type" type="s:string" />
+    <wsdl:part name="Acquiring_Code" type="s:string" />
+    <wsdl:part name="Term_ID" type="s:string" />
+    <wsdl:part name="Card_Acceptor_Name" type="s:string" />
+    <wsdl:part name="Destination_Number" type="s:string" />
+    <wsdl:part name="Narration" type="s:string" />
+    <wsdl:part name="Ben_ID" type="s:string" />
+    <wsdl:part name="MAC" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SML_Tranfer_To_AcctHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceSoap">
+    <wsdl:operation name="execute">
+      <wsdl:input message="tns:executeSoapIn" />
+      <wsdl:output message="tns:executeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SHB_Query">
+      <wsdl:input message="tns:SHB_QuerySoapIn" />
+      <wsdl:output message="tns:SHB_QuerySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SHB_Tranfer_To_Card">
+      <wsdl:input message="tns:SHB_Tranfer_To_CardSoapIn" />
+      <wsdl:output message="tns:SHB_Tranfer_To_CardSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SHB_Query_Acct">
+      <wsdl:input message="tns:SHB_Query_AcctSoapIn" />
+      <wsdl:output message="tns:SHB_Query_AcctSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SHB_Tranfer_To_Acct">
+      <wsdl:input message="tns:SHB_Tranfer_To_AcctSoapIn" />
+      <wsdl:output message="tns:SHB_Tranfer_To_AcctSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SML_Tranfer_To_Acct">
+      <wsdl:input message="tns:SML_Tranfer_To_AcctSoapIn" />
+      <wsdl:output message="tns:SML_Tranfer_To_AcctSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ServiceHttpGet">
+    <wsdl:operation name="execute">
+      <wsdl:input message="tns:executeHttpGetIn" />
+      <wsdl:output message="tns:executeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SHB_Query">
+      <wsdl:input message="tns:SHB_QueryHttpGetIn" />
+      <wsdl:output message="tns:SHB_QueryHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SHB_Tranfer_To_Card">
+      <wsdl:input message="tns:SHB_Tranfer_To_CardHttpGetIn" />
+      <wsdl:output message="tns:SHB_Tranfer_To_CardHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SHB_Query_Acct">
+      <wsdl:input message="tns:SHB_Query_AcctHttpGetIn" />
+      <wsdl:output message="tns:SHB_Query_AcctHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SHB_Tranfer_To_Acct">
+      <wsdl:input message="tns:SHB_Tranfer_To_AcctHttpGetIn" />
+      <wsdl:output message="tns:SHB_Tranfer_To_AcctHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SML_Tranfer_To_Acct">
+      <wsdl:input message="tns:SML_Tranfer_To_AcctHttpGetIn" />
+      <wsdl:output message="tns:SML_Tranfer_To_AcctHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ServiceHttpPost">
+    <wsdl:operation name="execute">
+      <wsdl:input message="tns:executeHttpPostIn" />
+      <wsdl:output message="tns:executeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SHB_Query">
+      <wsdl:input message="tns:SHB_QueryHttpPostIn" />
+      <wsdl:output message="tns:SHB_QueryHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SHB_Tranfer_To_Card">
+      <wsdl:input message="tns:SHB_Tranfer_To_CardHttpPostIn" />
+      <wsdl:output message="tns:SHB_Tranfer_To_CardHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SHB_Query_Acct">
+      <wsdl:input message="tns:SHB_Query_AcctHttpPostIn" />
+      <wsdl:output message="tns:SHB_Query_AcctHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SHB_Tranfer_To_Acct">
+      <wsdl:input message="tns:SHB_Tranfer_To_AcctHttpPostIn" />
+      <wsdl:output message="tns:SHB_Tranfer_To_AcctHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SML_Tranfer_To_Acct">
+      <wsdl:input message="tns:SML_Tranfer_To_AcctHttpPostIn" />
+      <wsdl:output message="tns:SML_Tranfer_To_AcctHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="execute">
+      <soap:operation soapAction="http://tempuri.org/execute" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SHB_Query">
+      <soap:operation soapAction="http://tempuri.org/SHB_Query" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SHB_Tranfer_To_Card">
+      <soap:operation soapAction="http://tempuri.org/SHB_Tranfer_To_Card" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SHB_Query_Acct">
+      <soap:operation soapAction="http://tempuri.org/SHB_Query_Acct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SHB_Tranfer_To_Acct">
+      <soap:operation soapAction="http://tempuri.org/SHB_Tranfer_To_Acct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SML_Tranfer_To_Acct">
+      <soap:operation soapAction="http://tempuri.org/SML_Tranfer_To_Acct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="execute">
+      <soap12:operation soapAction="http://tempuri.org/execute" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SHB_Query">
+      <soap12:operation soapAction="http://tempuri.org/SHB_Query" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SHB_Tranfer_To_Card">
+      <soap12:operation soapAction="http://tempuri.org/SHB_Tranfer_To_Card" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SHB_Query_Acct">
+      <soap12:operation soapAction="http://tempuri.org/SHB_Query_Acct" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SHB_Tranfer_To_Acct">
+      <soap12:operation soapAction="http://tempuri.org/SHB_Tranfer_To_Acct" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SML_Tranfer_To_Acct">
+      <soap12:operation soapAction="http://tempuri.org/SML_Tranfer_To_Acct" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceHttpGet" type="tns:ServiceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="execute">
+      <http:operation location="/execute" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SHB_Query">
+      <http:operation location="/SHB_Query" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SHB_Tranfer_To_Card">
+      <http:operation location="/SHB_Tranfer_To_Card" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SHB_Query_Acct">
+      <http:operation location="/SHB_Query_Acct" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SHB_Tranfer_To_Acct">
+      <http:operation location="/SHB_Tranfer_To_Acct" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SML_Tranfer_To_Acct">
+      <http:operation location="/SML_Tranfer_To_Acct" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceHttpPost" type="tns:ServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="execute">
+      <http:operation location="/execute" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SHB_Query">
+      <http:operation location="/SHB_Query" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SHB_Tranfer_To_Card">
+      <http:operation location="/SHB_Tranfer_To_Card" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SHB_Query_Acct">
+      <http:operation location="/SHB_Query_Acct" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SHB_Tranfer_To_Acct">
+      <http:operation location="/SHB_Tranfer_To_Acct" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SML_Tranfer_To_Acct">
+      <http:operation location="/SML_Tranfer_To_Acct" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service">
+    <wsdl:port name="ServiceSoap" binding="tns:ServiceSoap">
+      <soap:address location="https://172.16.16.2/SML_IBTA_GW/SMLWSGW.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceSoap12" binding="tns:ServiceSoap12">
+      <soap12:address location="https://172.16.16.2/SML_IBTA_GW/SMLWSGW.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceHttpGet" binding="tns:ServiceHttpGet">
+      <http:address location="https://172.16.16.2/SML_IBTA_GW/SMLWSGW.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceHttpPost" binding="tns:ServiceHttpPost">
+      <http:address location="https://172.16.16.2/SML_IBTA_GW/SMLWSGW.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "evn-mt", ".", "{B9F6CF01-87F9-4BA7-B871-2E4D4BEC5CDB}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6"
+		Debug.AspNetCompiler.VirtualPath = "/MobileGW"
+		Debug.AspNetCompiler.PhysicalPath = "..\evn-mt\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\MobileGW\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/MobileGW"
+		Release.AspNetCompiler.PhysicalPath = "..\evn-mt\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\MobileGW\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "27226"
+		SlnRelativePath = "..\evn-mt\"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B9F6CF01-87F9-4BA7-B871-2E4D4BEC5CDB}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{B9F6CF01-87F9-4BA7-B871-2E4D4BEC5CDB}.Debug|.NET.Build.0 = Debug|Any CPU
+		{B9F6CF01-87F9-4BA7-B871-2E4D4BEC5CDB}.Debug|.NET.Deploy.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

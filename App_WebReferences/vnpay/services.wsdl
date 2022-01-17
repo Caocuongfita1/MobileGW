@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SHB_SEND_MSG">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="USERNAME" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PASSWORD" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MTI" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TYPE" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="tran_id" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="BITMAP" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ARR_VALUES" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SHB_SEND_MSGResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SHB_SEND_MSGResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="testCreateXML">
+        <s:complexType />
+      </s:element>
+      <s:element name="testCreateXMLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="testCreateXMLResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VNPAY_MSG">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strXML" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VNPAY_MSGResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="VNPAY_MSGResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="SHB_SEND_MSGSoapIn">
+    <wsdl:part name="parameters" element="tns:SHB_SEND_MSG" />
+  </wsdl:message>
+  <wsdl:message name="SHB_SEND_MSGSoapOut">
+    <wsdl:part name="parameters" element="tns:SHB_SEND_MSGResponse" />
+  </wsdl:message>
+  <wsdl:message name="testCreateXMLSoapIn">
+    <wsdl:part name="parameters" element="tns:testCreateXML" />
+  </wsdl:message>
+  <wsdl:message name="testCreateXMLSoapOut">
+    <wsdl:part name="parameters" element="tns:testCreateXMLResponse" />
+  </wsdl:message>
+  <wsdl:message name="VNPAY_MSGSoapIn">
+    <wsdl:part name="parameters" element="tns:VNPAY_MSG" />
+  </wsdl:message>
+  <wsdl:message name="VNPAY_MSGSoapOut">
+    <wsdl:part name="parameters" element="tns:VNPAY_MSGResponse" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldHttpGetIn" />
+  <wsdl:message name="HelloWorldHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SHB_SEND_MSGHttpGetIn">
+    <wsdl:part name="USERNAME" type="s:string" />
+    <wsdl:part name="PASSWORD" type="s:string" />
+    <wsdl:part name="MTI" type="s:string" />
+    <wsdl:part name="TYPE" type="s:string" />
+    <wsdl:part name="tran_id" type="s:string" />
+    <wsdl:part name="BITMAP" type="s:string" />
+    <wsdl:part name="ARR_VALUES" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SHB_SEND_MSGHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="testCreateXMLHttpGetIn" />
+  <wsdl:message name="testCreateXMLHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="VNPAY_MSGHttpGetIn">
+    <wsdl:part name="strXML" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="VNPAY_MSGHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldHttpPostIn" />
+  <wsdl:message name="HelloWorldHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SHB_SEND_MSGHttpPostIn">
+    <wsdl:part name="USERNAME" type="s:string" />
+    <wsdl:part name="PASSWORD" type="s:string" />
+    <wsdl:part name="MTI" type="s:string" />
+    <wsdl:part name="TYPE" type="s:string" />
+    <wsdl:part name="tran_id" type="s:string" />
+    <wsdl:part name="BITMAP" type="s:string" />
+    <wsdl:part name="ARR_VALUES" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SHB_SEND_MSGHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="testCreateXMLHttpPostIn" />
+  <wsdl:message name="testCreateXMLHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="VNPAY_MSGHttpPostIn">
+    <wsdl:part name="strXML" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="VNPAY_MSGHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="ServicesSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Ham nay chang de lam gi! Test xem ket noi tot khong thoi. Hehe</wsdl:documentation>
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SHB_SEND_MSG">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">SHB_SEND_MSG</wsdl:documentation>
+      <wsdl:input message="tns:SHB_SEND_MSGSoapIn" />
+      <wsdl:output message="tns:SHB_SEND_MSGSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="testCreateXML">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">TEST CREATE XML</wsdl:documentation>
+      <wsdl:input message="tns:testCreateXMLSoapIn" />
+      <wsdl:output message="tns:testCreateXMLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VNPAY_MSG">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">VNPAY_MSG</wsdl:documentation>
+      <wsdl:input message="tns:VNPAY_MSGSoapIn" />
+      <wsdl:output message="tns:VNPAY_MSGSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ServicesHttpGet">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Ham nay chang de lam gi! Test xem ket noi tot khong thoi. Hehe</wsdl:documentation>
+      <wsdl:input message="tns:HelloWorldHttpGetIn" />
+      <wsdl:output message="tns:HelloWorldHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SHB_SEND_MSG">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">SHB_SEND_MSG</wsdl:documentation>
+      <wsdl:input message="tns:SHB_SEND_MSGHttpGetIn" />
+      <wsdl:output message="tns:SHB_SEND_MSGHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="testCreateXML">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">TEST CREATE XML</wsdl:documentation>
+      <wsdl:input message="tns:testCreateXMLHttpGetIn" />
+      <wsdl:output message="tns:testCreateXMLHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VNPAY_MSG">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">VNPAY_MSG</wsdl:documentation>
+      <wsdl:input message="tns:VNPAY_MSGHttpGetIn" />
+      <wsdl:output message="tns:VNPAY_MSGHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ServicesHttpPost">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Ham nay chang de lam gi! Test xem ket noi tot khong thoi. Hehe</wsdl:documentation>
+      <wsdl:input message="tns:HelloWorldHttpPostIn" />
+      <wsdl:output message="tns:HelloWorldHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SHB_SEND_MSG">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">SHB_SEND_MSG</wsdl:documentation>
+      <wsdl:input message="tns:SHB_SEND_MSGHttpPostIn" />
+      <wsdl:output message="tns:SHB_SEND_MSGHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="testCreateXML">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">TEST CREATE XML</wsdl:documentation>
+      <wsdl:input message="tns:testCreateXMLHttpPostIn" />
+      <wsdl:output message="tns:testCreateXMLHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VNPAY_MSG">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">VNPAY_MSG</wsdl:documentation>
+      <wsdl:input message="tns:VNPAY_MSGHttpPostIn" />
+      <wsdl:output message="tns:VNPAY_MSGHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServicesSoap" type="tns:ServicesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SHB_SEND_MSG">
+      <soap:operation soapAction="http://tempuri.org/SHB_SEND_MSG" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="testCreateXML">
+      <soap:operation soapAction="http://tempuri.org/testCreateXML" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VNPAY_MSG">
+      <soap:operation soapAction="http://tempuri.org/VNPAY_MSG" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServicesSoap12" type="tns:ServicesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SHB_SEND_MSG">
+      <soap12:operation soapAction="http://tempuri.org/SHB_SEND_MSG" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="testCreateXML">
+      <soap12:operation soapAction="http://tempuri.org/testCreateXML" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VNPAY_MSG">
+      <soap12:operation soapAction="http://tempuri.org/VNPAY_MSG" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServicesHttpGet" type="tns:ServicesHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="HelloWorld">
+      <http:operation location="/HelloWorld" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SHB_SEND_MSG">
+      <http:operation location="/SHB_SEND_MSG" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="testCreateXML">
+      <http:operation location="/testCreateXML" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VNPAY_MSG">
+      <http:operation location="/VNPAY_MSG" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServicesHttpPost" type="tns:ServicesHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="HelloWorld">
+      <http:operation location="/HelloWorld" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SHB_SEND_MSG">
+      <http:operation location="/SHB_SEND_MSG" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="testCreateXML">
+      <http:operation location="/testCreateXML" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VNPAY_MSG">
+      <http:operation location="/VNPAY_MSG" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Services">
+    <wsdl:port name="ServicesSoap" binding="tns:ServicesSoap">
+      <soap:address location="https://172.16.16.2/vnpaygw/Services.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServicesSoap12" binding="tns:ServicesSoap12">
+      <soap12:address location="https://172.16.16.2/vnpaygw/Services.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServicesHttpGet" binding="tns:ServicesHttpGet">
+      <http:address location="https://172.16.16.2/vnpaygw/Services.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServicesHttpPost" binding="tns:ServicesHttpPost">
+      <http:address location="https://172.16.16.2/vnpaygw/Services.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

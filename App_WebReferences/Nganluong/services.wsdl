@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="SHB_NEWBILL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Invoice_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:float" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SHB_NEWBILLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SHB_NEWBILLResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SHB_CHECKBILL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Invoice_id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SHB_CHECKBILLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SHB_CHECKBILLResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SHBAPP_NEWBILL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Invoice_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:float" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SHBAPP_NEWBILLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SHBAPP_NEWBILLResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SHBAPP_UPTBILL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Invoice_code" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="InvSts" type="s:unsignedByte" />
+            <s:element minOccurs="1" maxOccurs="1" name="Tranid" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SHBAPP_UPTBILLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SHBAPP_UPTBILLResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SHB_NEWBILLSoapIn">
+    <wsdl:part name="parameters" element="tns:SHB_NEWBILL" />
+  </wsdl:message>
+  <wsdl:message name="SHB_NEWBILLSoapOut">
+    <wsdl:part name="parameters" element="tns:SHB_NEWBILLResponse" />
+  </wsdl:message>
+  <wsdl:message name="SHB_CHECKBILLSoapIn">
+    <wsdl:part name="parameters" element="tns:SHB_CHECKBILL" />
+  </wsdl:message>
+  <wsdl:message name="SHB_CHECKBILLSoapOut">
+    <wsdl:part name="parameters" element="tns:SHB_CHECKBILLResponse" />
+  </wsdl:message>
+  <wsdl:message name="SHBAPP_NEWBILLSoapIn">
+    <wsdl:part name="parameters" element="tns:SHBAPP_NEWBILL" />
+  </wsdl:message>
+  <wsdl:message name="SHBAPP_NEWBILLSoapOut">
+    <wsdl:part name="parameters" element="tns:SHBAPP_NEWBILLResponse" />
+  </wsdl:message>
+  <wsdl:message name="SHBAPP_UPTBILLSoapIn">
+    <wsdl:part name="parameters" element="tns:SHBAPP_UPTBILL" />
+  </wsdl:message>
+  <wsdl:message name="SHBAPP_UPTBILLSoapOut">
+    <wsdl:part name="parameters" element="tns:SHBAPP_UPTBILLResponse" />
+  </wsdl:message>
+  <wsdl:message name="SHB_NEWBILLHttpGetIn">
+    <wsdl:part name="Username" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+    <wsdl:part name="Invoice_id" type="s:string" />
+    <wsdl:part name="Email" type="s:string" />
+    <wsdl:part name="Amount" type="s:string" />
+    <wsdl:part name="CustID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SHB_NEWBILLHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SHB_CHECKBILLHttpGetIn">
+    <wsdl:part name="Username" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+    <wsdl:part name="Invoice_id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SHB_CHECKBILLHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SHBAPP_NEWBILLHttpGetIn">
+    <wsdl:part name="Username" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+    <wsdl:part name="Invoice_id" type="s:string" />
+    <wsdl:part name="Email" type="s:string" />
+    <wsdl:part name="Amount" type="s:string" />
+    <wsdl:part name="CustID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SHBAPP_NEWBILLHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SHBAPP_UPTBILLHttpGetIn">
+    <wsdl:part name="Username" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+    <wsdl:part name="Invoice_code" type="s:string" />
+    <wsdl:part name="InvSts" type="s:string" />
+    <wsdl:part name="Tranid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SHBAPP_UPTBILLHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SHB_NEWBILLHttpPostIn">
+    <wsdl:part name="Username" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+    <wsdl:part name="Invoice_id" type="s:string" />
+    <wsdl:part name="Email" type="s:string" />
+    <wsdl:part name="Amount" type="s:string" />
+    <wsdl:part name="CustID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SHB_NEWBILLHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SHB_CHECKBILLHttpPostIn">
+    <wsdl:part name="Username" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+    <wsdl:part name="Invoice_id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SHB_CHECKBILLHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SHBAPP_NEWBILLHttpPostIn">
+    <wsdl:part name="Username" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+    <wsdl:part name="Invoice_id" type="s:string" />
+    <wsdl:part name="Email" type="s:string" />
+    <wsdl:part name="Amount" type="s:string" />
+    <wsdl:part name="CustID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SHBAPP_NEWBILLHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SHBAPP_UPTBILLHttpPostIn">
+    <wsdl:part name="Username" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+    <wsdl:part name="Invoice_code" type="s:string" />
+    <wsdl:part name="InvSts" type="s:string" />
+    <wsdl:part name="Tranid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SHBAPP_UPTBILLHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="ServicesSoap">
+    <wsdl:operation name="SHB_NEWBILL">
+      <wsdl:input message="tns:SHB_NEWBILLSoapIn" />
+      <wsdl:output message="tns:SHB_NEWBILLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SHB_CHECKBILL">
+      <wsdl:input message="tns:SHB_CHECKBILLSoapIn" />
+      <wsdl:output message="tns:SHB_CHECKBILLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SHBAPP_NEWBILL">
+      <wsdl:input message="tns:SHBAPP_NEWBILLSoapIn" />
+      <wsdl:output message="tns:SHBAPP_NEWBILLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SHBAPP_UPTBILL">
+      <wsdl:input message="tns:SHBAPP_UPTBILLSoapIn" />
+      <wsdl:output message="tns:SHBAPP_UPTBILLSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ServicesHttpGet">
+    <wsdl:operation name="SHB_NEWBILL">
+      <wsdl:input message="tns:SHB_NEWBILLHttpGetIn" />
+      <wsdl:output message="tns:SHB_NEWBILLHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SHB_CHECKBILL">
+      <wsdl:input message="tns:SHB_CHECKBILLHttpGetIn" />
+      <wsdl:output message="tns:SHB_CHECKBILLHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SHBAPP_NEWBILL">
+      <wsdl:input message="tns:SHBAPP_NEWBILLHttpGetIn" />
+      <wsdl:output message="tns:SHBAPP_NEWBILLHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SHBAPP_UPTBILL">
+      <wsdl:input message="tns:SHBAPP_UPTBILLHttpGetIn" />
+      <wsdl:output message="tns:SHBAPP_UPTBILLHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ServicesHttpPost">
+    <wsdl:operation name="SHB_NEWBILL">
+      <wsdl:input message="tns:SHB_NEWBILLHttpPostIn" />
+      <wsdl:output message="tns:SHB_NEWBILLHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SHB_CHECKBILL">
+      <wsdl:input message="tns:SHB_CHECKBILLHttpPostIn" />
+      <wsdl:output message="tns:SHB_CHECKBILLHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SHBAPP_NEWBILL">
+      <wsdl:input message="tns:SHBAPP_NEWBILLHttpPostIn" />
+      <wsdl:output message="tns:SHBAPP_NEWBILLHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SHBAPP_UPTBILL">
+      <wsdl:input message="tns:SHBAPP_UPTBILLHttpPostIn" />
+      <wsdl:output message="tns:SHBAPP_UPTBILLHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServicesSoap" type="tns:ServicesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SHB_NEWBILL">
+      <soap:operation soapAction="http://tempuri.org/SHB_NEWBILL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SHB_CHECKBILL">
+      <soap:operation soapAction="http://tempuri.org/SHB_CHECKBILL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SHBAPP_NEWBILL">
+      <soap:operation soapAction="http://tempuri.org/SHBAPP_NEWBILL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SHBAPP_UPTBILL">
+      <soap:operation soapAction="http://tempuri.org/SHBAPP_UPTBILL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServicesHttpGet" type="tns:ServicesHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="SHB_NEWBILL">
+      <http:operation location="/SHB_NEWBILL" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SHB_CHECKBILL">
+      <http:operation location="/SHB_CHECKBILL" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SHBAPP_NEWBILL">
+      <http:operation location="/SHBAPP_NEWBILL" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SHBAPP_UPTBILL">
+      <http:operation location="/SHBAPP_UPTBILL" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServicesHttpPost" type="tns:ServicesHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="SHB_NEWBILL">
+      <http:operation location="/SHB_NEWBILL" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SHB_CHECKBILL">
+      <http:operation location="/SHB_CHECKBILL" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SHBAPP_NEWBILL">
+      <http:operation location="/SHBAPP_NEWBILL" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SHBAPP_UPTBILL">
+      <http:operation location="/SHBAPP_UPTBILL" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Services">
+    <wsdl:port name="ServicesSoap" binding="tns:ServicesSoap">
+      <soap:address location="http://172.16.0.6:8000/services.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServicesHttpGet" binding="tns:ServicesHttpGet">
+      <http:address location="http://172.16.0.6:8000/services.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServicesHttpPost" binding="tns:ServicesHttpPost">
+      <http:address location="http://172.16.0.6:8000/services.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

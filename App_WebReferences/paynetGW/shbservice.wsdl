@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PrepaidSelling">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Prepaid_Type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Partner_Code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Bank_Trans_Number" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PrepaidSellingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PrepaidSellingResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TopupMobile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MSISDN" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="Partner_Code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Bank_Trans_Number" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TopupMobileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TopupMobileResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BillPayment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Provider_Type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Customer_Code" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="Partner_Code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Bank_Trans_Number" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BillPaymentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BillPaymentResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BillRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Provider_Type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Customer_Code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Partner_Code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Bank_Trans_Number" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BillRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BillRequestResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="PrepaidSellingSoapIn">
+    <wsdl:part name="parameters" element="tns:PrepaidSelling" />
+  </wsdl:message>
+  <wsdl:message name="PrepaidSellingSoapOut">
+    <wsdl:part name="parameters" element="tns:PrepaidSellingResponse" />
+  </wsdl:message>
+  <wsdl:message name="TopupMobileSoapIn">
+    <wsdl:part name="parameters" element="tns:TopupMobile" />
+  </wsdl:message>
+  <wsdl:message name="TopupMobileSoapOut">
+    <wsdl:part name="parameters" element="tns:TopupMobileResponse" />
+  </wsdl:message>
+  <wsdl:message name="BillPaymentSoapIn">
+    <wsdl:part name="parameters" element="tns:BillPayment" />
+  </wsdl:message>
+  <wsdl:message name="BillPaymentSoapOut">
+    <wsdl:part name="parameters" element="tns:BillPaymentResponse" />
+  </wsdl:message>
+  <wsdl:message name="BillRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:BillRequest" />
+  </wsdl:message>
+  <wsdl:message name="BillRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:BillRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldHttpGetIn" />
+  <wsdl:message name="HelloWorldHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="PrepaidSellingHttpGetIn">
+    <wsdl:part name="Prepaid_Type" type="s:string" />
+    <wsdl:part name="Partner_Code" type="s:string" />
+    <wsdl:part name="Bank_Trans_Number" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PrepaidSellingHttpGetOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="TopupMobileHttpGetIn">
+    <wsdl:part name="MSISDN" type="s:string" />
+    <wsdl:part name="Amount" type="s:string" />
+    <wsdl:part name="Partner_Code" type="s:string" />
+    <wsdl:part name="Bank_Trans_Number" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TopupMobileHttpGetOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="BillPaymentHttpGetIn">
+    <wsdl:part name="Provider_Type" type="s:string" />
+    <wsdl:part name="Customer_Code" type="s:string" />
+    <wsdl:part name="Amount" type="s:string" />
+    <wsdl:part name="Partner_Code" type="s:string" />
+    <wsdl:part name="Bank_Trans_Number" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="BillPaymentHttpGetOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="BillRequestHttpGetIn">
+    <wsdl:part name="Provider_Type" type="s:string" />
+    <wsdl:part name="Customer_Code" type="s:string" />
+    <wsdl:part name="Partner_Code" type="s:string" />
+    <wsdl:part name="Bank_Trans_Number" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="BillRequestHttpGetOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldHttpPostIn" />
+  <wsdl:message name="HelloWorldHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="PrepaidSellingHttpPostIn">
+    <wsdl:part name="Prepaid_Type" type="s:string" />
+    <wsdl:part name="Partner_Code" type="s:string" />
+    <wsdl:part name="Bank_Trans_Number" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PrepaidSellingHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="TopupMobileHttpPostIn">
+    <wsdl:part name="MSISDN" type="s:string" />
+    <wsdl:part name="Amount" type="s:string" />
+    <wsdl:part name="Partner_Code" type="s:string" />
+    <wsdl:part name="Bank_Trans_Number" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TopupMobileHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="BillPaymentHttpPostIn">
+    <wsdl:part name="Provider_Type" type="s:string" />
+    <wsdl:part name="Customer_Code" type="s:string" />
+    <wsdl:part name="Amount" type="s:string" />
+    <wsdl:part name="Partner_Code" type="s:string" />
+    <wsdl:part name="Bank_Trans_Number" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="BillPaymentHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="BillRequestHttpPostIn">
+    <wsdl:part name="Provider_Type" type="s:string" />
+    <wsdl:part name="Customer_Code" type="s:string" />
+    <wsdl:part name="Partner_Code" type="s:string" />
+    <wsdl:part name="Bank_Trans_Number" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="BillRequestHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:portType name="SHBServiceSoap">
+    <wsdl:operation name="HelloWorld">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Ham nay chang de lam gi! Test xem ket noi tot khong thoi. Hehe</documentation>
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PrepaidSelling">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Prepaid Selling: VTEL0020, SHB1, TRAN_ID</documentation>
+      <wsdl:input message="tns:PrepaidSellingSoapIn" />
+      <wsdl:output message="tns:PrepaidSellingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TopupMobile">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Topup Mobile: 0979718926, 50000, SHB1, TRAN_ID</documentation>
+      <wsdl:input message="tns:TopupMobileSoapIn" />
+      <wsdl:output message="tns:TopupMobileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BillPayment">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">BILL PAYMENT</documentation>
+      <wsdl:input message="tns:BillPaymentSoapIn" />
+      <wsdl:output message="tns:BillPaymentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BillRequest">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">BILL REQUEST</documentation>
+      <wsdl:input message="tns:BillRequestSoapIn" />
+      <wsdl:output message="tns:BillRequestSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="SHBServiceHttpGet">
+    <wsdl:operation name="HelloWorld">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Ham nay chang de lam gi! Test xem ket noi tot khong thoi. Hehe</documentation>
+      <wsdl:input message="tns:HelloWorldHttpGetIn" />
+      <wsdl:output message="tns:HelloWorldHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PrepaidSelling">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Prepaid Selling: VTEL0020, SHB1, TRAN_ID</documentation>
+      <wsdl:input message="tns:PrepaidSellingHttpGetIn" />
+      <wsdl:output message="tns:PrepaidSellingHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TopupMobile">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Topup Mobile: 0979718926, 50000, SHB1, TRAN_ID</documentation>
+      <wsdl:input message="tns:TopupMobileHttpGetIn" />
+      <wsdl:output message="tns:TopupMobileHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BillPayment">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">BILL PAYMENT</documentation>
+      <wsdl:input message="tns:BillPaymentHttpGetIn" />
+      <wsdl:output message="tns:BillPaymentHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BillRequest">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">BILL REQUEST</documentation>
+      <wsdl:input message="tns:BillRequestHttpGetIn" />
+      <wsdl:output message="tns:BillRequestHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="SHBServiceHttpPost">
+    <wsdl:operation name="HelloWorld">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Ham nay chang de lam gi! Test xem ket noi tot khong thoi. Hehe</documentation>
+      <wsdl:input message="tns:HelloWorldHttpPostIn" />
+      <wsdl:output message="tns:HelloWorldHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PrepaidSelling">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Prepaid Selling: VTEL0020, SHB1, TRAN_ID</documentation>
+      <wsdl:input message="tns:PrepaidSellingHttpPostIn" />
+      <wsdl:output message="tns:PrepaidSellingHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TopupMobile">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Topup Mobile: 0979718926, 50000, SHB1, TRAN_ID</documentation>
+      <wsdl:input message="tns:TopupMobileHttpPostIn" />
+      <wsdl:output message="tns:TopupMobileHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BillPayment">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">BILL PAYMENT</documentation>
+      <wsdl:input message="tns:BillPaymentHttpPostIn" />
+      <wsdl:output message="tns:BillPaymentHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BillRequest">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">BILL REQUEST</documentation>
+      <wsdl:input message="tns:BillRequestHttpPostIn" />
+      <wsdl:output message="tns:BillRequestHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SHBServiceSoap" type="tns:SHBServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PrepaidSelling">
+      <soap:operation soapAction="http://tempuri.org/PrepaidSelling" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TopupMobile">
+      <soap:operation soapAction="http://tempuri.org/TopupMobile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BillPayment">
+      <soap:operation soapAction="http://tempuri.org/BillPayment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BillRequest">
+      <soap:operation soapAction="http://tempuri.org/BillRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SHBServiceHttpGet" type="tns:SHBServiceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="HelloWorld">
+      <http:operation location="/HelloWorld" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PrepaidSelling">
+      <http:operation location="/PrepaidSelling" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TopupMobile">
+      <http:operation location="/TopupMobile" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BillPayment">
+      <http:operation location="/BillPayment" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BillRequest">
+      <http:operation location="/BillRequest" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SHBServiceHttpPost" type="tns:SHBServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="HelloWorld">
+      <http:operation location="/HelloWorld" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PrepaidSelling">
+      <http:operation location="/PrepaidSelling" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TopupMobile">
+      <http:operation location="/TopupMobile" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BillPayment">
+      <http:operation location="/BillPayment" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BillRequest">
+      <http:operation location="/BillRequest" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SHBService">
+    <wsdl:port name="SHBServiceSoap" binding="tns:SHBServiceSoap">
+      <soap:address location="http://172.16.0.142/paynetgw/shbservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SHBServiceHttpGet" binding="tns:SHBServiceHttpGet">
+      <http:address location="http://172.16.0.142/paynetgw/shbservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SHBServiceHttpPost" binding="tns:SHBServiceHttpPost">
+      <http:address location="http://172.16.0.142/paynetgw/shbservice.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
